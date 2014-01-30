@@ -1149,3 +1149,37 @@ add_filter('the_content', function($content) {
   return make_relative_site_links_in_content($content);
 }, 99);
 
+/* Referenten-Slider */
+
+// Add Shortcode
+
+function referentenSlider($atts) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			"anzahl" => '',
+			"kategorie" => '',
+		), $atts, 'referenten-slider' )
+	);
+
+	// Code
+	$args = array( 'posts_per_page' => $anzahl, 'category_name'=> $kategorie);
+	$the_query = new WP_Query( $args );
+	if ( $the_query->have_posts() ) :?>
+		<div class="flexslider">
+			<ul class="slides">
+			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+				<li><?php
+					wke2014_post_teaser();?>
+				</li>
+			<?php endwhile; ?>
+			</ul>
+		</div>
+	<?php endif;
+	wp_reset_postdata();
+
+	wp_enqueue_style( 'basemod_flexslider', get_template_directory_uri() . '/css/basemod_flexslider.css');
+	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'));
+}
+add_shortcode( 'referenten-slider', 'referentenSlider' );
