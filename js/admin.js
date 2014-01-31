@@ -45,4 +45,38 @@ jQuery(document).ready(function($){
     });
  
  
-});
+
+
+
+$('body').on('click', '.link-btn', function(event) {
+            wpActiveEditor = true; //we need to override this var as the link dialogue is expecting an actual wp_editor instance
+            wpLink.open(); //open the link popup
+            return false;
+        });
+$('body').on('click', '#wp-link-submit', function(event) {
+            var linkAtts = wpLink.getAttrs();//the links attributes (href, target) are stored in an object, which can be access via  wpLink.getAttrs()
+            $('#vortrag_referentlink').val(linkAtts.href);//get the href attribute and add to a textfield, or use as you see fit
+            wpLink.textarea = $('body'); //to close the link dialogue, it is again expecting an wp_editor instance, so you need to give it something to set focus back to. In this case, I'm using body, but the textfield with the URL would be fine
+            wpLink.close();//close the dialogue
+//trap any events
+            event.preventDefault ? event.preventDefault() : event.returnValue = false;
+            event.stopPropagation();
+            return false;
+        });
+	
+ $('body').on('click', '#wp-link-cancel', function(event) {
+        wpLink.textarea = $('body');
+        wpLink.close();
+        event.preventDefault ? event.preventDefault() : event.returnValue = false;
+        event.stopPropagation();
+        return false;
+    });
+
+
+
+    
+}); 
+
+jQuery(function() {
+   jQuery(".datepicker").datepicker();
+}); 
