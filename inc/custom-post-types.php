@@ -373,12 +373,12 @@ function vortrag_shortcode( $atts ) {
 				$out .= '<td>'.$vortrag_kurztext.'</td>';
 				if (isset($vortrag_referentname)) {
 					$out .= '<td>';
-					if (isset($vortrag_referentlink)) {
-					    $out .= '<a href="$vortrag_referentlink">';
+					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
+					    $out .= '<a href="'.$vortrag_referentlink.'">';
 					}
 					$out .= $vortrag_referentname;
 
-					if (isset($vortrag_referentlink)) {
+					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
 					    $out .= '</a>';
 					}
 					$out .= '</td>';
@@ -395,12 +395,12 @@ function vortrag_shortcode( $atts ) {
 				    
 				    if (isset($vortrag_referentname)) {
 					$out .= '<p class="autor">';
-					if (isset($vortrag_referentlink)) {
-					    $out .= '<a href="$vortrag_referentlink">';
+					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
+					    $out .= '<a href="'.$vortrag_referentlink.'">';
 					}
 					$out .= $vortrag_referentname;
 
-					if (isset($vortrag_referentlink)) {
+					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
 					    $out .= '</a>';
 					}
 					$out .= '</p>';
