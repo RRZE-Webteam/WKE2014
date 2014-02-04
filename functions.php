@@ -181,7 +181,7 @@ function wke2014_setup() {
 		return apply_filters( 'embed_ytnocookie', $embed, $matches, $attr, $url, $rawattr );
 
 	}
-	
+
 	 require( get_template_directory() . '/inc/custom-post-types.php' );
 
 }
@@ -267,10 +267,10 @@ add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_script('jquery',false,array(),false,1);
 	wp_enqueue_script( 'slider', get_template_directory_uri() . '/js/slider.js', array('jquery'), '1.0.0', true );
     }
-    
+
     // enqueue scripts and styles, but only if is_admin
 
-    
+
 } );
 
 
@@ -285,11 +285,11 @@ function wke2014_admin_style() {
     wp_enqueue_media();
     wp_register_script('themeadminscripts', get_template_directory_uri().'/js/admin.js', array('jquery'));
     wp_enqueue_script('themeadminscripts');
-    
+
     if(is_admin()) {
 	wp_enqueue_script('jquery-ui-datepicker');
 	wp_enqueue_script( 'wp-link' );
-    }  
+    }
 
 }
 add_action( 'admin_enqueue_scripts', 'wke2014_admin_style' );
@@ -1159,22 +1159,25 @@ add_filter('the_content', function($content) {
   return make_relative_site_links_in_content($content);
 }, 99);
 
-/* Referenten-Slider */
 
-// Add Shortcode
+/* Content-Slider */
 
-function referentenSlider($atts) {
+function contentSlider($atts) {
 
 	// Attributes
 	extract( shortcode_atts(
 		array(
+			"type" => '',
 			"anzahl" => '',
 			"kategorie" => '',
-		), $atts, 'referenten-slider' )
+		), $atts, 'content-slider' )
 	);
 
 	// Code
-	$args = array( 'posts_per_page' => $anzahl, 'category_name'=> $kategorie);
+	$args = array(
+		'post_type'			=> $type,
+		'posts_per_page'	=> $anzahl,
+		'category_name'		=> $kategorie);
 	$the_query = new WP_Query( $args );
 	if ( $the_query->have_posts() ) :?>
 		<div class="flexslider">
@@ -1192,4 +1195,20 @@ function referentenSlider($atts) {
 	wp_enqueue_style( 'basemod_flexslider', get_template_directory_uri() . '/css/basemod_flexslider.css');
 	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'));
 }
-add_shortcode( 'referenten-slider', 'referentenSlider' );
+add_shortcode( 'content-slider', 'contentSlider' );
+
+
+/* Add Excerpt, Category and Tags to Page */
+
+add_action( 'init', 'my_add_excerpts_to_pages' );
+function my_add_excerpts_to_pages() {
+     add_post_type_support( 'page', 'excerpt' );
+}
+
+function my_add_categories_to_pages() {
+	// Add tag metabox to page
+	register_taxonomy_for_object_type('post_tag', 'page');
+	// Add category metabox to page
+	register_taxonomy_for_object_type('category', 'page');
+}
+add_action( 'admin_init', 'my_add_categories_to_pages' );
