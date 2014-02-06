@@ -208,9 +208,6 @@
     	margin-bottom:15px;
     }
 
-    h4, h5, h6 {
-    }
-
     li h1, li h2, li h3, li h4, li h5, li h6 {
         font-size: 1em;
     }
@@ -260,6 +257,10 @@
     div#content h2.tfadmin { /*Admin Aktion */
         background: #bfbfbf;
         color: #DD3300;
+    }
+    
+    div#content h2.summary {
+	font-size: 1em;
     }
 
     /*  ------------------------------------------------------

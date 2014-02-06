@@ -30,7 +30,7 @@ function wke2014_vortrag_post_type() {
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail', ),
 		'hierarchical'        => false,
-		'public'              => true,
+		'public'              => false,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
 		'show_in_nav_menus'   => true,
@@ -231,10 +231,10 @@ function vortrag_metabox_save( $post_id ) {
 	
 	
 	if( isset( $_POST[ 'vortrag_text' ] ) ) {
-	    update_post_meta( $post_id, 'vortrag_text', sanitize_text_field( $_POST[ 'vortrag_text' ] ) );
+	    update_post_meta( $post_id, 'vortrag_text',  $_POST[ 'vortrag_text' ]  );
 	}
 	if( isset( $_POST[ 'vortrag_kurztext' ] ) ) {
-	    update_post_meta( $post_id, 'vortrag_kurztext', sanitize_text_field( $_POST[ 'vortrag_kurztext' ] ) );
+	    update_post_meta( $post_id, 'vortrag_kurztext',  $_POST[ 'vortrag_kurztext' ] );
 	}
 	if( isset( $_POST[ 'vortrag_referentname' ] ) ) {
 	    update_post_meta( $post_id, 'vortrag_referentname', sanitize_text_field( $_POST[ 'vortrag_referentname' ] ) );
@@ -282,11 +282,13 @@ function vortrag_shortcode( $atts ) {
 		'cat' => '',
 		'num' => 30,
 		'id'	=> '',
-		'format'    => 'table'
+		'format'    => 'table',
+		'showautor' => 1
 	), $atts ) );
 	$single = 0;
 	$cat = sanitize_text_field($cat);
 	$format = sanitize_text_field($format);
+	$showautor = sanitize_text_field($showautor);
 	if ((isset($id)) && ( strlen(trim($id))>0)) { 
 	
 	    $args = array(
@@ -319,7 +321,7 @@ function vortrag_shortcode( $atts ) {
 		    
 		    if (isset($format) && ($format=='table') && ($single==0)) {
 				$out .= '
-				    <table>
+				    <table class="vortragstabelle">
 				      <thead>
 				     <tr>
 				     <th>Titel</th>
@@ -353,7 +355,7 @@ function vortrag_shortcode( $atts ) {
 			    
 			    $dtstart = '';
 			    $dtstamp = '';
-			    
+			    $datumset = 0;
 			    if (preg_match("/\//",$vortrag_datum) ) {
 				$datum = preg_split("/\//", $vortrag_datum);
 
@@ -363,12 +365,13 @@ function vortrag_shortcode( $atts ) {
 				} else {
 				    $dtstamp = $datum[2].$datum[0].$datum[1];
 				}  
+				$datumset = 1;
 			    } else {
 				$datum = array("-","-","-");
 			    }
 			    
 		            if (isset($format) && ($format=='table') && ($single==0)) {		
-				$out .= "<tr>\n";
+				$out .= "<tr class=\"vortrag\">\n";
 				$out .= '<th>'.$title.'</th>';
 				$out .= '<td>'.$vortrag_kurztext.'</td>';
 				if (isset($vortrag_referentname)) {
@@ -389,11 +392,11 @@ function vortrag_shortcode( $atts ) {
 		
 			      $out .= '<section class="shortcode vortrag vevent" id="post-'.$post_id.'" >';
 			      $out .= "\n";
-				    $out .=  '<header class="titel ym-cbox">';
+				    $out .=  '<header class="titel">';
 				 
 				    $out .= '<h2 class="summary">'.$title.'</h2>';
 				    
-				    if (isset($vortrag_referentname)) {
+				    if ((isset($vortrag_referentname)) && ($showautor==1)) {
 					$out .= '<p class="autor">';
 					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
 					    $out .= '<a href="'.$vortrag_referentlink.'">';
@@ -406,7 +409,7 @@ function vortrag_shortcode( $atts ) {
 					$out .= '</p>';
 				    }
 				    
-				    if (isset($vortrag_datum)) {
+				    if ($datumset==1) {
 					    $out .= '<ul class="termin">';
 					    $out .= '<li class="date dtstart" title="'.$dtstart.'">Datum: '.$datum[1].'.'.$datum[0].'.'.$datum[2].'</span></li>'; 
 					    $out .= '<li class="zeit">Beginn: <span class="dtstamp" title="'.$dtstamp.'">'.$vortrag_beginn.'</span> Uhr</li>'; 
@@ -421,9 +424,9 @@ function vortrag_shortcode( $atts ) {
 				     
 				     
 				     
-				 $out .= '<div class="ym-column">';
+				 $out .= '<div class="vortrag_daten">';
 				  $out .= "\n";
-				     $out .= '<article class="post-entry ym-cbox"><p>';
+				     $out .= '<article class="post-entry"><p>';
 				     $out .= "\n";
 					
 				     if (isset($vortrag_kurztext)) {
