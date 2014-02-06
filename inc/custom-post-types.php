@@ -81,7 +81,9 @@ function wke2014_vortrag_metabox() {
 function vortrag_metabox_content( $post ) {
     global $defaultoptions;
     global $post;
- 
+    global $vortragszeiten;
+    global $vortragsraeume;
+    
 	wp_nonce_field( plugin_basename( __FILE__ ), 'vortrag_metabox_content_nonce' );
 	?>
 	
@@ -121,20 +123,7 @@ function vortrag_metabox_content( $post ) {
 		<?php 
 		    $active = esc_attr( get_post_meta( $post->ID, 'vortrag_beginn', true ) );
 		    $saal = esc_attr( get_post_meta( $post->ID, 'vortrag_raum', true ) );
-		    $liste = array(
-			"" => __('Noch in Planung', 'wke2014'),
-			"9" => __('9 Uhr', 'wke2014'),
-			"10" => __('10 Uhr', 'wke2014'),
-			"11" => __('11 Uhr', 'wke2014'),
-			"12" => __('12 Uhr', 'wke2014'),
-			"13" => __('13 Uhr', 'wke2014'),
-			"14" => __('14 Uhr', 'wke2014'),
-			"15" => __('15 Uhr', 'wke2014'),
-			"16" => __('16 Uhr', 'wke2014'),
-			"17" => __('17 Uhr', 'wke2014'),
-			"20" => __('20 Uhr', 'wke2014'),
-			
-		    );
+		    $liste = $vortragszeiten;
 		
 		
 		    foreach($liste as $i => $value) {   
@@ -159,13 +148,30 @@ function vortrag_metabox_content( $post ) {
 	    </select> 
 
 	    <label for="vortrag_raum"><?php _e( "Hörsaal", 'wke2014' ); ?>:</label>
-	    
+   
 	    <select name="vortrag_raum"  id="vortrag_raum">
-		<option value="">Noch in Planung</option>
-		<option value="Hörsaal 11" <?php if ($saal == "H11") echo 'selected="selected"'; ?>>Hörsaal 11 (500 Plätze)</option>
-		<option value="Hörsaal 12" <?php if ($saal == "H12") echo 'selected="selected"'; ?>>Hörsaal 12 (176 Plätze)</option>
-		<option value="Hörsaal 13" <?php if ($saal == "H13") echo 'selected="selected"'; ?>>Hörsaal 13 (121 Plätze)</option>
-		<option value="Heinrich Lades Halle" <?php if ($saal == "Heinrich Lades Halle") echo 'selected="selected"'; ?>>Abendveranstaltung: Heinrich Lades Halle</option>
+		<?php     
+		$liste = $vortragsraeume;
+		
+		
+		    foreach($liste as $i => $value) {   
+                                        echo "\t\t\t\t";
+                                        echo '<option value="'.$i.'"';
+                                        if ( $i == $saal ) {
+                                            echo ' selected="selected"';
+                                        }                                                                                                                                                                
+                                        echo '>';
+                                        if (!is_array($value)) {
+                                            echo $value;
+                                        } else {
+                                            echo $i;
+                                        }     
+                                        echo '</option>';                                                                                                                                                              
+                                        echo "\n";                                            
+                                    }  
+			    
+		?>		
+		
 	    </select> 
 	</p>
 	
@@ -278,6 +284,8 @@ add_filter( 'post_updated_messages', 'vortrag_metabox_updated_messages' );
 
 function vortrag_shortcode( $atts ) {
     global $options;
+    global $vortragszeiten;
+    global $vortragsraeume;
 	extract( shortcode_atts( array(
 		'cat' => '',
 		'num' => 30,
@@ -409,11 +417,12 @@ function vortrag_shortcode( $atts ) {
 					$out .= '</p>';
 				    }
 				    
+				    $raumstring = $vortragsraeume[$vortrag_raum];
 				    if ($datumset==1) {
 					    $out .= '<ul class="termin">';
 					    $out .= '<li class="date dtstart" title="'.$dtstart.'">Datum: '.$datum[1].'.'.$datum[0].'.'.$datum[2].'</span></li>'; 
 					    $out .= '<li class="zeit">Beginn: <span class="dtstamp" title="'.$dtstamp.'">'.$vortrag_beginn.'</span> Uhr</li>'; 
-					    $out .= '<li class="ort">Ort: <span class="location">'.$vortrag_raum.'</span></li>'; 
+					    $out .= '<li class="ort">Ort: <span class="location">'.$raumstring.'</span></li>'; 
 					    $out .= '</ul>';
 				    }
 				    

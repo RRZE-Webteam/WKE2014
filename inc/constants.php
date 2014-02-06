@@ -116,7 +116,30 @@ $defaultoptions = array(
     
 );
 
- 
+/* Vortragszeiten */
+
+  $vortragszeiten = array(
+			"" => __('Noch in Planung', 'wke2014'),
+			"9" => __('9 Uhr', 'wke2014'),
+			"10" => __('10 Uhr', 'wke2014'),
+			"11" => __('11 Uhr', 'wke2014'),
+			"12" => __('12 Uhr', 'wke2014'),
+			"13" => __('13 Uhr', 'wke2014'),
+			"14" => __('14 Uhr', 'wke2014'),
+			"15" => __('15 Uhr', 'wke2014'),
+			"16" => __('16 Uhr', 'wke2014'),
+			"17" => __('17 Uhr', 'wke2014'),
+			"20" => __('20 Uhr', 'wke2014'),
+			
+		    );
+$vortragsraeume = array(
+			"" => __('Noch in Planung', 'wke2014'),
+			"H11" => __('Hörsaal 11 (500 Plätze)', 'wke2014'),
+			"H12" => __('Hörsaal 12 (176 Plätze)', 'wke2014'),
+			"H13" => __('Hörsaal 13 (121 Plätze)', 'wke2014'),
+			"Heinrich Lades Halle" => __('Heinrich Lades Halle', 'wke2014'),
+			
+		    );
 
 /*
  * Liste Social Media 
