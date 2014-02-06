@@ -1401,5 +1401,23 @@
 		background-color: #666F7A;
 	}
 
+	/*  ------------------------------------------------------
+	JQUERY-ACCORDION
+	--------------------------------------------------------*/
+#accordion h3 {
+	cursor:pointer;
+	border-bottom: 1px solid #003366;
+	padding: 3px 0;
+}
+
+#accordion h3:before {
+		content: "\25B8";
+		width: 20px;
+		display: inline-block;
+		color: #1559A6;
+	}
+#accordion h3.active:before {
+		content: "\25bd";
+	}
 }
 

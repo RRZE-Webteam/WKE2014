@@ -12,7 +12,7 @@ function wke2014_widgets_init() {
                 'name' => __( 'Kurzinfo', 'wke2014' ),
                 'id' => 'kurzinfo-area',
                 'description' => __( 'Bereich unterhalb des Menus links', 'wke2014' ),
-                'before_widget' => '<div class="kurzinfo">',
+                'before_widget' => '<div id="kurzinfo">',
                 'after_widget' => '</div>',
                 'before_title' => '<h2>',
                 'after_title' => '</h2>',

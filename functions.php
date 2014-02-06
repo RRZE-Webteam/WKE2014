@@ -247,6 +247,9 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_register_style( 'wke2014', get_stylesheet_uri(), array(), $theme['Version'] );
     wp_enqueue_style( 'wke2014' );
 
+	wp_enqueue_script( 'jquery_ui', get_template_directory_uri() . '/js/jquery-ui-1.10.4.custom.min.js', array('jquery'), '1.10.4');
+	wp_enqueue_style( 'jquery_ui_css', get_template_directory_uri() . '/css/jquery-ui-1.10.4.custom.min.css', '1.10.4');
+
     if ((isset($options['aktiv-basemod_zusatzinfo'])) && ($options['aktiv-basemod_zusatzinfo']==1))
         wp_enqueue_style( 'basemod_zusatzinfo', get_template_directory_uri() . $defaultoptions['src_basemod_zusatzinfo'], array(), $theme['Version'] );
 
@@ -271,7 +274,7 @@ add_action( 'wp_enqueue_scripts', function() {
     // enqueue scripts and styles, but only if is_admin
 
 
-} );
+	} );
 
 
 
@@ -1179,22 +1182,35 @@ function contentSlider($atts) {
 		'posts_per_page'	=> $anzahl,
 		'category_name'		=> $kategorie);
 	$the_query = new WP_Query( $args );
-	if ( $the_query->have_posts() ) :?>
-		<div class="flexslider">
-			<ul class="slides">
-			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-				<li><?php
-					wke2014_post_teaser();?>
-				</li>
-			<?php endwhile; ?>
-			</ul>
-		</div>
-	<?php endif;
+	$output = '';
+	if ( $the_query->have_posts() ) :
+		$output = '<div class="flexslider">';
+		$output .= '<ul class="slides">';
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$id = get_the_ID();
+			$output .= '<li>';
+			$output .= '<h2>' . get_the_title() . '</h2>';
+			if (has_post_thumbnail()) {
+				$output .= get_the_post_thumbnail($id,'teaser-thumb',array('class'	=> 'attachment-teaser-thumb'));
+			}
+			else {
+				$output .= '<div class="infoimage" style="width:120px;float:left;margin-right:10px;">' . get_wke2014_firstpicture() . '</div>';
+			}
+			$output .=  get_wke2014_custom_excerpt($length = 200, $continuenextline = 1, $removeyoutube = 1);
+			$output .= '</li>';
+		endwhile;
+		$output .= '</ul>';
+		$output .= '</div>';
+	endif;
 	wp_reset_postdata();
+
 
 	wp_enqueue_style( 'basemod_flexslider', get_template_directory_uri() . '/css/basemod_flexslider.css');
 	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'));
+	return $output;
+
 }
+
 add_shortcode( 'content-slider', 'contentSlider' );
 
 

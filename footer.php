@@ -40,13 +40,16 @@ global $options;
 
     </div>  <!-- end: seite -->
   </div>  <!-- end: page_margins  -->
-  <script type="text/javascript">
-			(function($){
-				$(window).load(function() {
-					$('.flexslider').flexslider();
-				});
-			})(jQuery);
-		</script>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$( "#accordion" ).accordion({
+			collapsible: true,
+			heightStyle: "content"
+		});
+		$('.flexslider').flexslider();
+	});
+</script>
   <?php if ($options['aktiv-slider']==1) { ?>
 
 	<script type="text/javascript">
