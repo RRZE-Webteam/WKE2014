@@ -19,8 +19,8 @@ License: GNU General Public License
 @import url(css/basemod.min.css);
 /* @import url(css/basemod.css); */
 
-/*@import url(css/content.min.css);*/
- @import url(css/content.css);
+@import url(css/content.min.css);
+/* @import url(css/content.css);*/
 
 @import url(css/buttons.css);
 
