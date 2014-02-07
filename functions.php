@@ -1173,14 +1173,19 @@ function contentSlider($atts) {
 			"type" => '',
 			"anzahl" => '',
 			"kategorie" => '',
+			'orderby'   => 'rand',
 		), $atts, 'content-slider' )
 	);
-
+	$type = sanitize_text_field($type);
+	$orderby = sanitize_text_field($orderby);
+	$kategorie = sanitize_text_field($kategorie);
+	$anzahl = sanitize_text_field($anzahl);
 	// Code
 	$args = array(
 		'post_type'			=> $type,
 		'posts_per_page'	=> $anzahl,
-		'category_name'		=> $kategorie);
+		'category_name'		=> $kategorie,
+		'orderby'   => $orderby	    );
 	$the_query = new WP_Query( $args );
 	$output = '';
 	if ( $the_query->have_posts() ) :
