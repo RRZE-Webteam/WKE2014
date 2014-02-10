@@ -43,7 +43,7 @@ global $options;
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$( "#accordion" ).accordion({
+		$( ".accordion" ).accordion({
 			collapsible: true,
 			heightStyle: "content"
 		});
