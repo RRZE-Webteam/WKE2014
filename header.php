@@ -15,7 +15,7 @@ global $options;
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/grafiken/favicon.ico" />
     <meta property="og:url" content="<?php echo home_url(); ?>"/>
 	<meta property="og:title" content="<?php bloginfo( 'name' ); ?>"/>
-	<meta property="”og:site_name" content="<?php bloginfo( 'name' ); ?>"/>
+	<meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>"/>
 	<meta property="og:description" content="20.–21.März 2014 in Erlangen. Webkongress mit führenden Köpfen der IT-Szene. Themenschwerpunkte: Barrierefreiheit, Content-Management-Systeme (CMS) und Webdesign"/>
 	<meta property="og:type" content="website"/>
 	<meta property="og:image" content="<?php header_image(); ?>"/>
