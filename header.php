@@ -13,7 +13,14 @@ global $options;
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/grafiken/favicon.ico" />
-    <?php wp_head(); ?>
+    <meta property="og:url" content="<?php echo home_url(); ?>"/>
+	<meta property="og:title" content="<?php bloginfo( 'name' ); ?>"/>
+	<meta property="”og:site_name" content="<?php bloginfo( 'name' ); ?>"/>
+	<meta property="og:description" content="20.–21.März 2014 in Erlangen. Webkongress mit führenden Köpfen der IT-Szene. Themenschwerpunkte: Barrierefreiheit, Content-Management-Systeme (CMS) und Webdesign"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="<?php header_image(); ?>"/>
+	<meta property="og:locale" content="de_de"/>
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>  <!-- begin: body -->
