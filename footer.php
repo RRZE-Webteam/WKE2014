@@ -43,12 +43,14 @@ global $options;
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$( ".accordion" ).accordion({
-			collapsible: true,
-			heightStyle: "content"
+		$(".accordion h2:gt(0)").addClass("closed");
+		$(".accordion div:gt(0)").hide();
+		$(".accordion h2").click(function(){
+			$(this).next("div").slideToggle("slow");
+			$(this).toggleClass("closed");
+			});
 		});
 		$('.flexslider').flexslider();
-	});
 </script>
   <?php if ($options['aktiv-slider']==1) { ?>
 

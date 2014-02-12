@@ -1402,22 +1402,60 @@
 	}
 
 	/*  ------------------------------------------------------
-	JQUERY-ACCORDION
+	CUSTOM POST TYPE VORTRAG / ACCORDION
 	--------------------------------------------------------*/
-#accordion h3 {
-	cursor:pointer;
-	border-bottom: 1px solid #003366;
-	padding: 3px 0;
-}
 
-#accordion h3:before {
-		content: "\25B8";
+	/*	CMS: #ffdd0e;
+		Webdesign: #66b32d;
+		Barrierefreiheit: #1559a6;
+	*/
+
+div#content .accordion h2 {
+	cursor:pointer;
+	padding: 3px 0;
+	color:#fff;
+	text-shadow:  0 0 2px rgba(0, 0, 0, 0.4);
+	padding: 3px 5px;
+	letter-spacing: .12em;
+	font-size: 1.05em;
+}
+div#content .accordion h2:before {
+		content: "\25BE";
 		width: 20px;
 		display: inline-block;
-		color: #1559A6;
-	}
-#accordion h3.active:before {
-		content: "\25bd";
-	}
+}
+div#content .accordion h2.closed:before {
+		content: "\25B8";
+}
+div#content .accordion h2.cms {
+	background-color: #fcd800;
+	border-bottom: 2px solid #FEC43F;
+}
+div#content .accordion h2.barrierefreiheit {
+	background-color: #1559a6;
+	border-bottom: 2px solid #07376C;
+}
+div#content .accordion h2.webdesign {
+	background-color: #66b32d;
+	border-bottom: 2px solid #6A7E10;
+}
+#content .vortragsliste table th,
+#content .vortragsliste table td {
+	border-right: none;
+	background-color: transparent;
+}
+#content h2.cms+table th,
+#content h2.cms+table td {
+	border-bottom: 1px solid #fcd800;
+}
+#content h2.barrierefreiheit+table th,
+#content h2.barrierefreiheit+table td {
+	border-bottom: 1px solid #1559a6;
+}
+#content h2.webdesign+table th,
+#content h2.webdesign+table td {
+	border-bottom: 1px solid #66b32d;
 }
 
+
+}

@@ -247,10 +247,7 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_register_style( 'wke2014', get_stylesheet_uri(), array(), $theme['Version'] );
     wp_enqueue_style( 'wke2014' );
 
-	wp_enqueue_script( 'jquery_ui', get_template_directory_uri() . '/js/jquery-ui-1.10.4.custom.min.js', array('jquery'), '1.10.4');
-	wp_enqueue_style( 'jquery_ui_css', get_template_directory_uri() . '/css/jquery-ui-1.10.4.custom.min.css', '1.10.4');
-
-    if ((isset($options['aktiv-basemod_zusatzinfo'])) && ($options['aktiv-basemod_zusatzinfo']==1))
+	if ((isset($options['aktiv-basemod_zusatzinfo'])) && ($options['aktiv-basemod_zusatzinfo']==1))
         wp_enqueue_style( 'basemod_zusatzinfo', get_template_directory_uri() . $defaultoptions['src_basemod_zusatzinfo'], array(), $theme['Version'] );
 
     if ((isset($options['aktiv-basemod_links'])) && ($options['aktiv-basemod_links']==1))
