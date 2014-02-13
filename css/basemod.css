@@ -1482,19 +1482,10 @@ div#content .accordion h2.webdesign {
 }
 #content .zeitplan td .titel {
 	font-weight: bold;
+	letter-spacing: .02em;
 }
 #content .zeitplan td .referent {
-	font-style:italic;
 	color:#666;
-}
-#content .zeitplan td.cms .titel {
-	//color:#fea90d;
-}
-#content .zeitplan td.barrierefreiheit .titel {
-	//color:#1559a6;
-}
-#content .zeitplan td.webdesign .titel {
-	//color:#1d9034;
 }
 #content .zeitplan td.cms {
 	background-color:#fffceb;
@@ -1507,6 +1498,17 @@ div#content .accordion h2.webdesign {
 #content .zeitplan td.webdesign {
 	background-color:#f7fcf4;
 	border-left: 7px solid #66b32d;
+}
+#content .zeitplan td.pause {
+	text-align: center;
+	border-left: 7px solid #ddd;
+	color:#777;
+	letter-spacing: .1em;
+	background-color: #fefefe;
+}
+#content .zeitplan td.pause.kurz {
+}
+#content .zeitplan td.pause.lang {
 }
 	/*	CMS: #ffdd0e;
 		Barrierefreiheit: #1559a6;
