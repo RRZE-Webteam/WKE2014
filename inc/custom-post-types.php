@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -41,7 +41,7 @@ function wke2014_vortrag_post_type() {
 		'has_archive'         => true,
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
-		'rewrite'		=> array( 'slug' => 'vortrag','with_front' => FALSE), 
+		'rewrite'		=> array( 'slug' => 'vortrag','with_front' => FALSE),
 		'capability_type'     => 'page',
 	);
 	register_post_type( 'vortrag', $args );
@@ -69,7 +69,7 @@ add_action( 'init', 'wke2014_vortrag_taxonomies' );
 
 
 function wke2014_vortrag_metabox() {
-    add_meta_box( 
+    add_meta_box(
         'vortrag_metabox',
         __( 'Beschreibung des Vortrags', 'wke2014' ),
         'vortrag_metabox_content',
@@ -83,10 +83,10 @@ function vortrag_metabox_content( $post ) {
     global $post;
     global $vortragszeiten;
     global $vortragsraeume;
-    
+
 	wp_nonce_field( plugin_basename( __FILE__ ), 'vortrag_metabox_content_nonce' );
 	?>
-	
+
 	<p>
 		<label for="vortrag_kurztext"><?php _e( "Kurzbeschreibung", 'wke2014' ); ?>:</label>
 		<br />
@@ -109,77 +109,77 @@ function vortrag_metabox_content( $post ) {
 		<input  type="text" name="vortrag_referentlink"
 			id="vortrag_referentlink" value="<?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_referentlink', true ) ); ?>" size="30" />
 		<button class="link-btn"><?php _e( "Link einfügen", 'wke2014' ); ?></button>
-	</p>	
+	</p>
 
 	<p>
 		<label for="vortrag_datum"><?php _e( "Datum", 'wke2014' ); ?>:</label>
 		<br />
 		<input class="datepicker" type="text" name="vortrag_datum"
-		       id="vortrag_datum" value="<?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_datum', true ) ); ?>" size="30" />	    
-	
+		       id="vortrag_datum" value="<?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_datum', true ) ); ?>" size="30" />
+
 	    <label for="vortrag_beginn"><?php _e( "Beginn", 'wke2014' ); ?>:</label>
-	    
+
 	    <select name="vortrag_beginn"  id="vortrag_beginn">
-		<?php 
+		<?php
 		    $active = esc_attr( get_post_meta( $post->ID, 'vortrag_beginn', true ) );
 		    $saal = esc_attr( get_post_meta( $post->ID, 'vortrag_raum', true ) );
 		    $liste = $vortragszeiten;
-		
-		
-		    foreach($liste as $i => $value) {   
+
+
+		    foreach($liste as $i => $value) {
                                         echo "\t\t\t\t";
                                         echo '<option value="'.$i.'"';
                                         if ( $i == $active ) {
                                             echo ' selected="selected"';
-                                        }                                                                                                                                                                
+                                        }
                                         echo '>';
                                         if (!is_array($value)) {
                                             echo $value;
                                         } else {
                                             echo $i;
-                                        }     
-                                        echo '</option>';                                                                                                                                                              
-                                        echo "\n";                                            
-                                    }  
-			    
-		?>		
-		
-	
-	    </select> 
+                                        }
+                                        echo '</option>';
+                                        echo "\n";
+                                    }
+
+		?>
+
+
+	    </select>
 
 	    <label for="vortrag_raum"><?php _e( "Hörsaal", 'wke2014' ); ?>:</label>
-   
+
 	    <select name="vortrag_raum"  id="vortrag_raum">
-		<?php     
+		<?php
 		$liste = $vortragsraeume;
-		
-		
-		    foreach($liste as $i => $value) {   
+
+
+		    foreach($liste as $i => $value) {
                                         echo "\t\t\t\t";
                                         echo '<option value="'.$i.'"';
                                         if ( $i == $saal ) {
                                             echo ' selected="selected"';
-                                        }                                                                                                                                                                
+                                        }
                                         echo '>';
                                         if (!is_array($value)) {
                                             echo $value;
                                         } else {
                                             echo $i;
-                                        }     
-                                        echo '</option>';                                                                                                                                                              
-                                        echo "\n";                                            
-                                    }  
-			    
-		?>		
-		
-	    </select> 
-	</p>
-	
+                                        }
+                                        echo '</option>';
+                                        echo "\n";
+                                    }
 
-					
-						
-						
-	
+		?>
+
+	    </select>
+	</p>
+
+
+
+
+
+
 	<p>
 		<label for="vortrag_aufzeichnung"><?php _e( "Geben Sie hier die Webadresse (URL) ein, die zur Aufzeichnung (Videportal) führt", 'wke2014' ); ?>:</label>
 		<br />
@@ -192,11 +192,11 @@ function vortrag_metabox_content( $post ) {
 		<input class="url" type="text" name="vortrag_folien"
 		       id="vortrag_folien" value="<?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_folien', true ) ); ?>" size="30" />
 	</p>
-	
-	
-	
-	<?php 
-	
+
+
+
+	<?php
+
 }
 add_action( 'add_meta_boxes', 'wke2014_vortrag_metabox' );
 
@@ -206,8 +206,8 @@ function vortrag_metabox_save( $post_id ) {
 	return;
     }
 
-	
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 	return;
 
 	if ( !wp_verify_nonce( $_POST['vortrag_metabox_content_nonce'], plugin_basename( __FILE__ ) ) )
@@ -220,7 +220,7 @@ function vortrag_metabox_save( $post_id ) {
 		if ( !current_user_can( 'edit_post', $post_id ) )
 		return;
 	}
-	
+
 	$url = $_POST['vortrag_aufzeichnung'];
 	if (filter_var($url, FILTER_VALIDATE_URL)) {
 	    update_post_meta( $post_id, 'vortrag_aufzeichnung', $url );
@@ -233,9 +233,9 @@ function vortrag_metabox_save( $post_id ) {
 	if (filter_var($url, FILTER_VALIDATE_URL)) {
 	    update_post_meta( $post_id, 'vortrag_referentlink', $url );
 	}
-	
-	
-	
+
+
+
 	if( isset( $_POST[ 'vortrag_text' ] ) ) {
 	    update_post_meta( $post_id, 'vortrag_text',  $_POST[ 'vortrag_text' ]  );
 	}
@@ -254,8 +254,8 @@ function vortrag_metabox_save( $post_id ) {
 	if( isset( $_POST[ 'vortrag_raum' ] ) ) {
 	    update_post_meta( $post_id, 'vortrag_raum', sanitize_text_field( $_POST[ 'vortrag_raum' ] ) );
 	}
-	
-    
+
+
 }
 add_action( 'save_post', 'vortrag_metabox_save' );
 
@@ -268,7 +268,7 @@ function vortrag_metabox_updated_messages( $messages ) {
 		1 => __('Die Vortragsinformationen wurden aktualisiert. ', 'wke2014'),
 		2 => __('Die Vortragsinformationen wurden aktualisiert.', 'wke2014'),
 		3 => __('Vortragsinformationen wurden gel&ouml;scht.', 'wke2014'),
-		6 => __('Vortragsinformationen wurden ver&ouml;ffentlicht.', 'wke2014'), 
+		6 => __('Vortragsinformationen wurden ver&ouml;ffentlicht.', 'wke2014'),
 		7 => __('Vortragsinformationen wurden gespeichert.', 'wke2014'),
 			);
 	return $messages;
@@ -278,7 +278,7 @@ add_filter( 'post_updated_messages', 'vortrag_metabox_updated_messages' );
 
 
 /* Shortcode Definition
- * 
+ *
  */
 
 
@@ -297,8 +297,8 @@ function vortrag_shortcode( $atts ) {
 	$cat = sanitize_text_field($cat);
 	$format = sanitize_text_field($format);
 	$showautor = sanitize_text_field($showautor);
-	if ((isset($id)) && ( strlen(trim($id))>0)) { 
-	
+	if ((isset($id)) && ( strlen(trim($id))>0)) {
+
 	    $args = array(
 			'post_type' => 'vortrag',
 			'p' => $id
@@ -315,42 +315,42 @@ function vortrag_shortcode( $atts ) {
 				    )
 			)
 		);
-	   
+
 	} else {
 	    $args = array(
 			'post_type' => 'vortrag'
 	    );
 	}
-	
+
 	$links = new WP_Query( $args );
 		if( $links->have_posts() ) {
 		    $i=0;
 		    $out = '';
-		    
+
 		    if (isset($format) && ($format=='table') && ($single==0)) {
 				$out .= '
 				    <table class="vortragstabelle">
 				      <thead>
 				     <tr>
-				     <th>Titel</th>
-					 <th>Kurzbeschreibung</th>
-					 <th>Referent</th>
+				     <th scope="col" class="titel">Titel</th>
+					 <th scope="col" class="kurztext">Kurzbeschreibung</th>
+					 <th scope="col" class="referent">Referent</th>
 				     </tr>
 				    </thead>
 				    <tbody>
 				';
-		    }		
-		    
-		    
+		    }
+
+
 		    while ($links->have_posts() && ($i<$num) ) {
 			$links->the_post();
 			$i++;
-	
+
 			    $post_id = $links->post->ID;
-			    $title = get_the_title(); 
-			    
-			 		    
-			    
+			    $title = get_the_title();
+
+
+
 			    $vortrag_kurztext = get_post_meta( $post_id, 'vortrag_kurztext', true );
 			    $vortrag_text = get_post_meta( $post_id, 'vortrag_text', true );
 			    $vortrag_referentname = get_post_meta( $post_id, 'vortrag_referentname', true );
@@ -360,7 +360,7 @@ function vortrag_shortcode( $atts ) {
 			    $vortrag_raum = get_post_meta( $post_id, 'vortrag_raum', true );
 			    $vortrag_aufzeichnung = get_post_meta( $post_id, 'vortrag_aufzeichnung', true );
 			    $vortrag_folien = get_post_meta( $post_id, 'vortrag_folien', true );
-			    
+
 			    $dtstart = '';
 			    $dtstamp = '';
 			    $datumset = 0;
@@ -372,15 +372,15 @@ function vortrag_shortcode( $atts ) {
 				  $dtstamp = $datum[2].$datum[0].$datum[1].'T'.$vortrag_beginn.'00';
 				} else {
 				    $dtstamp = $datum[2].$datum[0].$datum[1];
-				}  
+				}
 				$datumset = 1;
 			    } else {
 				$datum = array("-","-","-");
 			    }
-			    
-		            if (isset($format) && ($format=='table') && ($single==0)) {		
+
+		            if (isset($format) && ($format=='table') && ($single==0)) {
 				$out .= "<tr class=\"vortrag\">\n";
-				$out .= '<th>'.$title.'</th>';
+				$out .= '<th scope="row">'.$title.'</th>';
 				$out .= '<td>'.$vortrag_kurztext.'</td>';
 				if (isset($vortrag_referentname)) {
 					$out .= '<td>';
@@ -395,15 +395,15 @@ function vortrag_shortcode( $atts ) {
 					$out .= '</td>';
 				    }
 				$out .= "</tr>\n";
-			    } else {	
-				
-		
+			    } else {
+
+
 			      $out .= '<section class="shortcode vortrag vevent" id="post-'.$post_id.'" >';
 			      $out .= "\n";
 				    $out .=  '<header class="titel">';
-				 
+
 				    $out .= '<h2 class="summary">'.$title.'</h2>';
-				    
+
 				    if ((isset($vortrag_referentname)) && ($showautor==1)) {
 					$out .= '<p class="autor">';
 					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
@@ -416,44 +416,44 @@ function vortrag_shortcode( $atts ) {
 					}
 					$out .= '</p>';
 				    }
-				    
+
 				    $raumstring = $vortragsraeume[$vortrag_raum];
 				    if ($datumset==1) {
 					    $out .= '<ul class="termin">';
-					    $out .= '<li class="date dtstart" title="'.$dtstart.'">Datum: '.$datum[1].'.'.$datum[0].'.'.$datum[2].'</span></li>'; 
-					    $out .= '<li class="zeit">Beginn: <span class="dtstamp" title="'.$dtstamp.'">'.$vortrag_beginn.'</span> Uhr</li>'; 
-					    $out .= '<li class="ort">Ort: <span class="location">'.$raumstring.'</span></li>'; 
+					    $out .= '<li class="date dtstart" title="'.$dtstart.'">Datum: '.$datum[1].'.'.$datum[0].'.'.$datum[2].'</span></li>';
+					    $out .= '<li class="zeit">Beginn: <span class="dtstamp" title="'.$dtstamp.'">'.$vortrag_beginn.'</span> Uhr</li>';
+					    $out .= '<li class="ort">Ort: <span class="location">'.$raumstring.'</span></li>';
 					    $out .= '</ul>';
 				    }
-				    
-				    
-				    $out .= '</header>';  
+
+
+				    $out .= '</header>';
 				    $out .= "\n";
-				
-				     
-				     
-				     
+
+
+
+
 				 $out .= '<div class="vortrag_daten">';
 				  $out .= "\n";
 				     $out .= '<article class="post-entry"><p>';
 				     $out .= "\n";
-					
+
 				     if (isset($vortrag_kurztext)) {
 					    $out .= '<p class="kurzbeschreibung">';
 					     $out .=  $vortrag_kurztext;
 					     $out .= '</p>';
-					} 
-					
+					}
+
 					if (isset($vortrag_text)) {
-					   
+
 					    $out .= '<p class="detailbeschreibung">';
 					     $out .=  $vortrag_text;
 					     $out .= '</p>';
-					}     
-				    
-				     $out .= "</article>\n"; 
+					}
 
-				     if ( (isset($vortrag_aufzeichnung) && (strlen(trim($vortrag_aufzeichnung))>0)) 
+				     $out .= "</article>\n";
+
+				     if ( (isset($vortrag_aufzeichnung) && (strlen(trim($vortrag_aufzeichnung))>0))
 					     || (isset($vortrag_folien) && (strlen(trim($vortrag_folien))>0)) )  {
 					 $out .= '<footer>';
 					  $out .= '<ul class="medien">';
@@ -465,30 +465,30 @@ function vortrag_shortcode( $atts ) {
 					  }
 					  $out .= '</ul>';
 					 $out .= '</footer>';
-					 
-				     }
-				    
-				     
 
-				  $out .= "</div>\n"; 
+				     }
+
+
+
+				  $out .= "</div>\n";
 			      $out .= "</section>\n";
-			    }	
+			    }
 			    }
 			    if (isset($format) && ($format=='table') && ($single==0)) {
 				$out .= '</table>';
-			    }		
-		    
-			    
-			    
-		   
+			    }
+
+
+
+
 		    wp_reset_postdata();
-	
+
 		} else {
 			$out = '<section class="shortcode vortrag"><p>';
 			$out .= __('Es konnten keine Vortragsinformationen gefunden werden.', 'wke2014');
 			$out .= "</p></section>\n";
 		}
-	
+
 	return $out;
 }
 add_shortcode( 'vortrag', 'vortrag_shortcode' );

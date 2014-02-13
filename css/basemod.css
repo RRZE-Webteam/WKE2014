@@ -1402,12 +1402,12 @@
 	}
 
 	/*  ------------------------------------------------------
-	CUSTOM POST TYPE VORTRAG / ACCORDION
+	CUSTOM POST TYPE VORTRAG / ACCORDION / SCHEDULE
 	--------------------------------------------------------*/
 
 	/*	CMS: #ffdd0e;
-		Webdesign: #66b32d;
 		Barrierefreiheit: #1559a6;
+		Webdesign: #66b32d;
 	*/
 
 div#content .accordion h2 {
@@ -1444,18 +1444,72 @@ div#content .accordion h2.webdesign {
 	border-right: none;
 	background-color: transparent;
 }
-#content h2.cms+table th,
-#content h2.cms+table td {
+#content .cms table th,
+#content .cms table td {
 	border-bottom: 1px solid #fcd800;
 }
-#content h2.barrierefreiheit+table th,
-#content h2.barrierefreiheit+table td {
+#content .barrierefreiheit table th,
+#content .barrierefreiheit table td {
 	border-bottom: 1px solid #1559a6;
 }
-#content h2.webdesign+table th,
-#content h2.webdesign+table td {
+#content .webdesign table th,
+#content .webdesign table td {
 	border-bottom: 1px solid #66b32d;
 }
-
-
+#content .vortragstabelle th.titel {
+	width: 25%;
+}
+#content .vortragstabelle th.kurztext {
+	width: 55%;
+}
+#content .vortragstabelle th.referent {
+	width: 20%;
+}
+#content .zeitplan th,
+#content .zeitplan td {
+	border-right: none;
+	border-top: none;
+	border-bottom: 1px solid #999;
+	background-color: transparent;
+	color:#444;
+	padding-left:6px;
+}
+#content .zeitplan th.zeit {
+	width:10%;
+}
+#content .zeitplan th.ort {
+	width:30%;
+}
+#content .zeitplan td .titel {
+	font-weight: bold;
+}
+#content .zeitplan td .referent {
+	font-style:italic;
+	color:#666;
+}
+#content .zeitplan td.cms .titel {
+	//color:#fea90d;
+}
+#content .zeitplan td.barrierefreiheit .titel {
+	//color:#1559a6;
+}
+#content .zeitplan td.webdesign .titel {
+	//color:#1d9034;
+}
+#content .zeitplan td.cms {
+	background-color:#fffceb;
+	border-left: 7px solid #ffdd0e;
+}
+#content .zeitplan td.barrierefreiheit {
+	background-color:#f0f6fd;
+	border-left: 7px solid #1559a6;
+}
+#content .zeitplan td.webdesign {
+	background-color:#f7fcf4;
+	border-left: 7px solid #66b32d;
+}
+	/*	CMS: #ffdd0e;
+		Barrierefreiheit: #1559a6;
+		Webdesign: #66b32d;
+	*/
 }
