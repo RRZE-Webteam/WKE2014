@@ -49,8 +49,8 @@ global $options;
 			$(this).next("div").slideToggle("slow");
 			$(this).toggleClass("closed");
 			});
-		});
 		$('.flexslider').flexslider();
+	});
 </script>
   <?php if ($options['aktiv-slider']==1) { ?>
 
