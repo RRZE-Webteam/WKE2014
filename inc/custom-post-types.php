@@ -384,7 +384,7 @@ function vortrag_shortcode( $atts ) {
 						.$title
 						. '</span><br /><span class="referent">(';
 					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
-					    $out .= '<a href="'.$vortrag_referentlink.'">';
+					    $out .= '<a href="'.$vortrag_referentlink.' title="'.$vortrag_referentname.'>';
 					}
 					$out .= $vortrag_referentname;
 					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
@@ -400,7 +400,7 @@ function vortrag_shortcode( $atts ) {
 				if (isset($vortrag_referentname)) {
 					$out .= '<td>';
 					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
-					    $out .= '<a href="'.$vortrag_referentlink.'">';
+					    $out .= '<a href="'.$vortrag_referentlink.' title="'.$vortrag_referentname.'>';
 					}
 					$out .= $vortrag_referentname;
 
