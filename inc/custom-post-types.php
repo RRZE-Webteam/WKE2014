@@ -378,7 +378,22 @@ function vortrag_shortcode( $atts ) {
 				$datum = array("-","-","-");
 			    }
 
-		            if (isset($format) && ($format=='table') && ($single==0)) {
+		        if (isset($id) && isset($format) &&($format=='short')) {
+					$out .= ''
+						. '<span class="titel">'
+						.$title
+						. '</span><br /><span class="referent">(';
+					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
+					    $out .= '<a href="'.$vortrag_referentlink.'">';
+					}
+					$out .= $vortrag_referentname;
+					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
+					    $out .= '</a>';
+					}
+					$out .= ')</span>';
+				}
+
+				elseif (isset($format) && ($format=='table') && ($single==0)) {
 				$out .= "<tr class=\"vortrag\">\n";
 				$out .= '<th scope="row">'.$title.'</th>';
 				$out .= '<td>'.$vortrag_kurztext.'</td>';

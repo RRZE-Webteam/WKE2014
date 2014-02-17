@@ -1478,6 +1478,7 @@ div#content .accordion h2.webdesign {
 	width:10%;
 }
 #content .zeitplan th.ort {
+	text-align: center;
 	width:45%;
 }
 #content .zeitplan td .titel {
@@ -1506,10 +1507,17 @@ div#content .accordion h2.webdesign {
 	letter-spacing: .1em;
 	background-color: #fefefe;
 }
+#content .zeitplan td.allgemein {
+	text-align: center;
+	border-left: 7px solid #aaa;
+	background-color: #fefefe;
+}
 #content .zeitplan td.pause.kurz {
 }
 #content .zeitplan td.pause.lang {
 }
+
+
 	/*	CMS: #ffdd0e;
 		Barrierefreiheit: #1559a6;
 		Webdesign: #66b32d;
