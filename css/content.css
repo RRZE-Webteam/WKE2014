@@ -1,4 +1,4 @@
-/**
+/*
  * Projekt Vorlagenkatalog
  *
  * Basisstylesheet WKE2014
@@ -191,7 +191,7 @@
     div#content ul * ul,
     div#content ol * p,
     div#content ul * p {
-        font-size: 1em;
+        font-size: 1.3em;
     }
 
     /*  ------------------------------------------------------
@@ -258,7 +258,7 @@
         background: #bfbfbf;
         color: #DD3300;
     }
-    
+
     div#content h2.summary {
 	font-size: 1em;
     }
@@ -463,14 +463,18 @@ TABELLEN
     text-align: left;
     padding: 6px 6px 6px 12px;
     color: #2F2F2F;
-    border-right: 1px solid #003366;
-    border-bottom: 1px solid #003366;
-    border-top: 1px solid #003366;
-    background: #eaf0f6;
-	vertical-align: top;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    vertical-align: top;
 }
 #content td p {
-        font-size: 1em;
+	font-size: 1.3em;
+}
+#content td h2 {
+	margin-top: 5px;
+}
+#content td h3 {
+	font-size: 1.4em;
 }
 
 #content td.rechts,
