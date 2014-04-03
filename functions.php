@@ -1208,7 +1208,8 @@ function contentSlider($atts) {
 
 
 	wp_enqueue_style( 'basemod_flexslider', get_template_directory_uri() . '/css/basemod_flexslider.css');
-	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'));
+	wp_enqueue_script( 'jquery-flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'), '2.2.0', true);
+    wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/flexslider.js', array(), false, true);
 	return $output;
 
 }
