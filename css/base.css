@@ -210,16 +210,16 @@
 	.ym-col1 { float:left; width:20%; }
 	.ym-col2 { float:right; width:20%; }
 	.ym-col3 { width:auto; margin:0 20%; }
-	
+
 	.column1 .ym-col1 { float:left; width:30%; }
 	.column2 .ym-col1 { float:left; width:30%; }
 	.column1 .ym-col2 { float:right; width:30%; }
 	.column2 .ym-col2 { float:right; width:30%; }
 	.column1 .ym-col3 { width:auto; margin:0 30%; }
 	.column2 .ym-col3 { width:auto; margin:0 30%; }
-	
+
 	.ym-col1 + .ym-col3 { margin-right: 0 } /* Wenn es keine col2 gibt, soll col3 die komplette verfügbare Breite ausfüllen*/
-	
+
 	.column1 .withvideo .ym-column,
 	.column2 .withvideo .ym-column { height: 100%; }
 	.withvideo .ym-col1 { width: 320px; max-width: 100%; } /* Videos in  der ersten Spalte dürfen breiter sein */
@@ -228,7 +228,7 @@
 	.column2 .withvideo .ym-col1 { float: none; width: 100%; height: auto;}
 	.column1 .withvideo .ym-col3,
 	.column2 .withvideo .ym-col3 { margin: 0 }
-	
+
 	.column1 .withvideo .infoimage,
 	.column2 .withvideo .infoimage {
 	    position: relative;
@@ -238,17 +238,20 @@
 	    width: 100% !important;
 	}
 	.column2 .withvideo .ym-col3 { margin: 0 }
-	
+
 	.usefloating .ym-col1 {
 	    margin-right: 5px;
-	    margin-bottom: 5px;
 	}
+	.usefloating .ym-col1 img {
+		margin-bottom: 5px; /* Verteilung von margin-bottom und margin-right notwendig, da sonst bei fehlendem Bild das umgebende div nicht korrekt kollabiert. */
+	}
+
 	.usefloating .ym-col1 + .ym-col3,
 	.column1 .usefloating .ym-col3,
 	.column2 .usefloating .ym-col3 {
 	    margin: 0;
 	}
-	
+
 	/* (en) Preparation for absolute positioning within content columns */
 	/* (de) Vorbereitung für absolute Positionierungen innerhalb der Inhaltsspalten */
 	.ym-cbox,
@@ -259,7 +262,7 @@
 	.ym-cbox-left { padding: 0 10px 0 0 }
 	.ym-cbox-right { padding: 0 0 0 10px }
 
-	
+
 	/* (en) IE-Clearing:Only used in Internet Explorer, switched on in iehacks.css */
 	/* (de) IE-Clearing:Benötigt nur der Internet Explorer und über iehacks.css zugeschaltet */
 	.ym-ie-clearing { display:none; }
@@ -295,7 +298,7 @@
 	.ym-g38 { width:38.2%; }
 	.ym-g62 { width:61.8%; }
 	.column1, .column2 { width:50%; }
-	
+
 	.ym-gbox { padding: 0 10px }
 	.ym-gbox-left { padding: 0 10px 0 0 }
 	.ym-gbox-right { padding: 0 0 0 10px }
@@ -321,10 +324,10 @@
 /* Mediaqueries für Columns */
 
 @media screen and (max-width: 960px) and (min-width: 760px) {
-	
-	.column1 .ym-col1, 
+
+	.column1 .ym-col1,
 	.column1 .ym-col3,
-	.column2 .ym-col1, 
+	.column2 .ym-col1,
 	.column2 .ym-col3 {
 	    width: 100%;
 	}
@@ -332,39 +335,39 @@
 	.column2 .ym-col3 {
 	    margin-left: 0;
 	}
-	
+
 	div#content .column1 .sticky,
 	div#content .column2 .sticky {
 	    width: 100% !important;
 	}
-		
+
 }
 
 @media screen and (max-width: 760px) {
-	
-	.column1, 
+
+	.column1,
 	.column2 {
 	    width: 100%;
 	}
-	
+
 	.withvideo .ym-col1 {
 	    float: none;
 	}
-	
-	.withvideo .ym-col1 + .ym-col3 { 
+
+	.withvideo .ym-col1 + .ym-col3 {
 	    margin-left: 0;
 	}
-	
+
 	div#content .columns hr.trenner {
 	   display: none;
-	}	
-	
+	}
+
 	.column1 .ym-col1,
 	.column2 .ym-col1 {
 	    float: none;
 	    width: auto;
 	}
-    
+
 	.column1 .ym-col3,
 	.column2 .ym-col3 {
 	    margin-left: 0;
@@ -374,20 +377,20 @@
 	    width: 100% !important;
 	}
 }
-    
-	
+
+
 
 @media screen and (max-width: 280px) {
 
     .ym-cbox {
 	padding: 0;
     }
-    
+
     .sticky .ym-cbox {
 	padding: 0 10px;
     }
-    
-    
+
+
 }
 
 
