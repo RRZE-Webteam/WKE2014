@@ -113,6 +113,7 @@ $defaultoptions = array(
 	/* Keine weiteren Videos vorschlagen */
     'yt-content-width'              => 665,
     'yt-content-height'             => 500,
+    'aktiv-opengraph'                   => false,
 
 );
 
@@ -690,13 +691,33 @@ $setoptions = array(
 		  'liste'   => $default_socialmedia_liste,
 	      ),
 
-
-
+           
           )
        ),
 
+        'advanced'   => array(
+           'tabtitle'   => __('Erweitert', 'wke2014'),
+           'fields' => array(
 
+              'meta-verify-v1' => array(
+                  'type'    => 'text',
+                  'title'   => __( 'Google Verify', 'wke2014' ),
+                  'label'   => __( 'Optionale Texteingabe zur Identifizierung über Meta-Angaben für Google Webmaster Tools.', 'wke2014' ),
+              ),  
+	      'aktiv-opengraph' => array(
+		'type'    => 'bool',
+		      'title'   => __( 'OpenGraph aktivieren', 'wke2014' ),
+		      'label'   => __( 'OpenGraph Metaangaben durch das Thema erstellen lassen; Deaktivieren, wenn dies ein Plugin wie wpSEO machen soll.', 'wke2014' ),
+		      'default' => $defaultoptions['aktiv-opengraph'],
+              ),
+           
+          )
+       ),
 
+       
+       
+
+       
 
 
    )

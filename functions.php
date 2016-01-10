@@ -120,6 +120,8 @@ function wke2014_setup() {
 
 	if ( function_exists( 'add_theme_support' ) ) {
 	    add_theme_support( 'post-thumbnails' );
+            add_theme_support( 'custom-header' );
+            add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 	    set_post_thumbnail_size( 150, 150 ); // default Post Thumbnail dimensions
 	}
 
@@ -294,6 +296,29 @@ function wke2014_admin_style() {
 }
 add_action( 'admin_enqueue_scripts', 'wke2014_admin_style' );
 
+
+
+function wke2014_addmetatags() {
+    global $options;
+
+    $output = "";
+    $output .= '<meta http-equiv="Content-Type" content="text/html; charset='.get_bloginfo('charset').'" />'."\n";
+    $output .= '<meta name="viewport" content="width=device-width, initial-scale=1.0">'."\n";    
+
+    if ((isset( $options['meta-verify-v1'] )) && ( strlen(trim($options['meta-verify-v1']))>1 )) {
+        $output .= '<meta name="google-site-verification" content="'.$options['meta-verify-v1'].'">'."\n";
+    }
+     if ((isset( $options['aktiv-opengraph'] )) && ( $options['aktiv-opengraph']==true )) {
+       $output .= '<meta property="og:url" content="'.get_bloginfo('url').'"/>'."\n";    
+	$output .= '<meta property="og:title" content="'.get_bloginfo('name').'"/>'."\n";    
+	$output .= '<meta property="og:site_name" content="'.get_bloginfo('name').'"/>'."\n";    
+	$output .= '<meta property="og:description" content="'.get_bloginfo('description').'"/>'."\n";    
+	$output .= '<meta property="og:type" content="website"/>'."\n";    
+	$output .= '<meta property="og:image" content="'.get_header_image().'"/>'."\n";    
+     }
+      echo $output;
+}
+add_action('wp_head', 'wke2014_addmetatags',1);
 
 
 /* Format list for Tagclouds also in widgets */
