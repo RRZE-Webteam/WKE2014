@@ -48,48 +48,7 @@
     background:url('../images/links/univis.gif') center right no-repeat;
   }
 
-#content a[href ^="https://"] {
-   color: #0066BB;
-    background: url(../images/links/lock.gif) center right no-repeat;
-    padding-right: 16px;
-}
-#content a[href ^="mailto:"] {
-   color: #0066BB;
-    background: url(../images/links/mail.gif) center right no-repeat;
-    padding-right: 18px;
-}
-#content a[href $=".ogg"], a[href $=".OGG"],
-#content a[href $=".mid"], a[href $=".MID"],
-#content a[href $=".midi"], a[href $=".MIDI"],
-#content a[href $=".mp3"], a[href $=".MP3"],
-#content a[href $=".wav"], a[href $=".WAV"],
-#content a[href $=".wma"], a[href $=".WMA"] {
-    background: url("../images/links/audio.png") center left no-repeat;
-    padding-left: 19px;
-}
-#content a[href $=".ogm"], a[href $=".OGM"],
-#content a[href $=".avi"], a[href $=".AVI"],
-#content a[href $=".mpeg"], a[href $=".MPEG"],
-#content a[href $=".mpg"], a[href $=".MPG"] {
-    background: url("../images/links/video.png") center left no-repeat;
-    padding-left: 19px;
-}
-#content a[href $=".pdf"], a[href $=".PDF"],
-#content a[href *=".pdf#"], a[href *=".PDF#"],
-#content a[href *=".pdf?"], a[href *=".PDF?"] {
-    background: url("../images/links/pdf.gif") center left no-repeat;
-    padding-left: 19px;
-}
-#content a[href $=".zip"], a[href $=".ZIP"],
-#content a[href $=".rar"], a[href $=".RAR"],
-#content a[href $=".exe"], a[href $=".EXE"],
-#content a[href $=".msi"], a[href $=".MSI"],
-#content a[href $=".dmg"], a[href $=".DMG"],
-#content a[href $=".gz"], a[href $=".GZ"],
-#content a[href *=".gzip"], a[href *=".GZIP"] {
-    background: url("../images/links/zip.gif") center left no-repeat;
-    padding-left: 19px;
-}
+
 
 #content a.nolinkicon {
 	background: none;
