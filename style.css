@@ -16,8 +16,8 @@ License: GNU General Public License
 @import url(css/base_ym3.css);
 
 /* import screen layout | Screen-Layout einbinden */
-/*@import url(css/basemod.min.css);*/
- @import url(css/basemod.css);
+@import url(css/basemod.min.css);
+/* @import url(css/basemod.css); */
 
 @import url(css/content.min.css); 
 /* @import url(css/content.css); */
