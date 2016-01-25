@@ -134,19 +134,19 @@
     /*  ------------------------------------------------------
     LINKS
     --------------------------------------------------------*/
-    div#content a,
-    div#content a:link {
+     a,
+     a:link {
         text-decoration: underline;
         color: #666f7a;
     }
 
-    div#content a:visited {
+     a:visited {
         color: #666f7a;
     }
 
-    div#content a:hover,
-    div#content a:focus,
-    div#content a:active {
+     a:hover,
+     a:focus,
+     a:active {
         text-decoration: none;
         border-bottom: #aad4ff 1px solid;
         background-color: #eef6ff;
@@ -165,7 +165,7 @@
     /*  ------------------------------------------------------
     TEXTABSATZ
     --------------------------------------------------------*/
-    div#content p {
+     p {
         font-size: 0.76em;
         line-height: 180%;
         margin: 0 0 16px 0;
@@ -175,22 +175,22 @@
         line-height:1.25em;
         margin-left:0; /* LTR */
     }
-    div#content p,
-    div#content label,
-    div#content ul,
-    div#content ol {
+     p,
+     label,
+    #content ul,
+    #content ol {
         color: #333;
     }
 
-    div#content ul li,
-    div#content ol li {
+    #content ul li,
+    #content ol li {
         line-height:180%;
     }
 
-    div#content ol * ul,
-    div#content ul * ul,
-    div#content ol * p,
-    div#content ul * p {
+    #content ol * ul,
+    #content ul * ul,
+    #content ol * p,
+    #content ul * p {
         font-size: 1em;
     }
 
@@ -202,9 +202,9 @@
 		letter-spacing: 0.1em;
     }
 
-    #content h1,
-    #content h2,
-    #content h3 {
+     h1,
+     h2,
+     h3 {
     	margin-bottom:15px;
     }
 
@@ -222,66 +222,66 @@
         border-bottom: #003366 1px solid;
     }
 
-    div#content h2 a,
-    div#content h2 a:link,
-    div#content h2 a:visited {
+     h2 a,
+     h2 a:link,
+     h2 a:visited {
         display: block;
         text-decoration: none;
         color: #666f7a;
     }
 
-    div#content h2 a:hover,
-    div#content h2 a:focus,
-    div#content h2 a:active {
+     h2 a:hover,
+     h2 a:focus,
+     h2 a:active {
         text-decoration: none;
         border-bottom: 0 none;
         background: #e8eef2;
         color: #575e68;
     }
 
-    div#content h2.tfnote { /* Hinweis */
+     h2.tfnote { /* Hinweis */
         background: #bfbfbf;
         color: #0000AA;
     }
 
-    div#content h2.tfok { /* Aktion OK */
+     h2.tfok { /* Aktion OK */
         background: #bfbfbf;
         color: #00AA00;
     }
 
-    div#content h2.tferror { /*Fehler bei Aktion*/
+     h2.tferror { /*Fehler bei Aktion*/
         background: #bfbfbf;
         color: #AA0000;
     }
 
-    div#content h2.tfadmin { /*Admin Aktion */
+     h2.tfadmin { /*Admin Aktion */
         background: #bfbfbf;
         color: #DD3300;
     }
 
-    div#content h2.summary {
+     h2.summary {
 	font-size: 1em;
     }
 
     /*  ------------------------------------------------------
     h3
     --------------------------------------------------------*/
-    div#content h3 {
+     h3 {
 		font-size: 1.1em;
 		margin: 0 0 10px 0;
 		font-weight: bold;
 		color: #666f7a;
     }
 
-    div#content h3 a,
-    div#content h3 a:link,
-    div#content h3 a:visited {
+     h3 a,
+     h3 a:link,
+     h3 a:visited {
     	color: #666f7a;
     }
 
-    div#content h3 a:hover,
-    div#content h3 a:focus,
-    div#content h3 a:active {
+     h3 a:hover,
+     h3 a:focus,
+     h3 a:active {
         background: #e8eef2;
         color: #575e68;
     }
@@ -289,21 +289,21 @@
     /*  ------------------------------------------------------
     h4 + h5 + h6
     --------------------------------------------------------*/
-    div#content h4,
-    div#content h5,
-    div#content h6 {
+     h4,
+     h5,
+     h6 {
         font-size: 0.84em;
         margin: 0 120px 14px 0;
         font-weight: bold;
         color: #666f7a;
     }
 
-    div#content h4 a,
-    div#content h5 a,
-    div#content h6 a,
-    div#content h4 a:link,
-    div#content h5 a:link,
-    div#content h6 a:link {
+     h4 a,
+     h5 a,
+     h6 a,
+     h4 a:link,
+     h5 a:link,
+     h6 a:link {
         color: #666f7a;
     }
 
@@ -312,14 +312,14 @@
     --------------------------------------------------------*/
     ul {list-style-type: none;}
 
-    div#content ul {
+   #content ul {
         margin: 10px 20px;
         font-size: 0.76em;
         list-style-type: disc;
     }
 
-     div#content ul ul,
-     div#content ol ul {
+   #content ul ul,
+   #content ol ul {
         margin: 0 0 0 20px;
         font-size: 1em;
     }
@@ -327,13 +327,13 @@
     /*  ------------------------------------------------------
     GEORDNETE LISTE
     --------------------------------------------------------*/
-    div#content ol {
+    #content ol {
         margin: 10px 20px 30px 30px;
         font-size: 0.76em;
     }
 
-     div#content ul ol,
-     div#content ol ol {
+     ul ol,
+     ol ol {
         margin: 0 0 0 20px;
         font-size: 1em;
     }
@@ -341,17 +341,17 @@
     /*  ------------------------------------------------------
     DEFINITIONSLISTEN
     --------------------------------------------------------*/
-    div#content dl {
+    dl {
         font-size: 0.76em;
         margin: 0 0 16px 0;
         color: #333;
     }
 
-    div#content dd {
+    dd {
         margin: 0 0 8px 0;
     }
 
-    div#content dt {
+     dt {
         font-weight: bold;
     }
 }
@@ -364,46 +364,53 @@ blockquote, cite {
     font-weight: normal;
     letter-spacing: 0;
 }
-div#content blockquote p {
+ blockquote p {
     /*font-size: 1.1em;*/
     line-height: 2em;
 }
 /*  ------------------------------------------------------
 Bilder im Inhaltsbereich
 --------------------------------------------------------*/
-#content p img {
+figcaption {
+    font-style: italic;
+    text-align: left;   
+    font-size: 0.76em;
+}
+p img {
     display: inline;
 }
-div#content .alignleft,
-div#content .bildlinks {
+.alignleft,
+.bildlinks {
     display: inline;
     float: left;
     margin: 10px 10px 10px 0;
 }
-div#content .alignright,
-div#content .bildrechts {
+.alignright,
+.bildrechts {
     display: inline;
     float: right;
     margin: 10px 0 10px 10px;
 }
 
-div#content .aligncenter {
+.aligncenter {
     margin-left: auto;
     margin-right: auto;
 }
 
-div#content img{
+img{
     max-width: 100%;
     height: auto;
 }
 
-div#content .wp-caption {
+wp-caption {
     max-width: 100%;
 }
-div#content .wp-caption-text {
+.wp-caption-text {
     font-style: italic;
     text-align: left;
 }
+
+
 
 /*  ------------------------------------------------------
 Videos im Inhaltsbereich
@@ -418,12 +425,12 @@ iframe {
 /*  ------------------------------------------------------
 TABELLEN
 --------------------------------------------------------*/
-#content table {
+ table {
     margin: 0 0 20px 0;
     border-collapse: collapse;
     width:99%;
 }
-#content table caption {
+ table caption {
     padding: 0 0 5px 0;
     font-size: 0.7em;
     font-style: italic;
@@ -431,7 +438,7 @@ TABELLEN
     color: #2F2F2F;
 }
 
-#content th {
+ th {
     font-size: 0.76em;
     padding: 6px 6px 6px 12px;
     border-right: 1px solid #003366;
@@ -440,25 +447,25 @@ TABELLEN
     color: #3F3F3F;
 	vertical-align: top;
 }
-#content th a.pfeil:link,
-#content th a.pfeil:hover,
-#content th a.pfeil:active{
+ th a.pfeil:link,
+ th a.pfeil:hover,
+ th a.pfeil:active{
     font-size: 1.2em;
     padding-left:3px;
     background:none;
     text-decoration:none;
     border:none;
 }
-#content th.reihe {
+ th.reihe {
     text-align: left;
 }
-#content th h2 {
+ th h2 {
     margin: 1.5em 1em 1em 1em;
 }
-#content th h3 {
+ th h3 {
     margin: 1em 0.5em 0.5em 0.5em;
 }
-#content td {
+ td {
     font-size: 0.76em;
     text-align: left;
     padding: 6px 6px 6px 12px;
@@ -467,54 +474,54 @@ TABELLEN
     border-bottom: 1px solid #999999;
     vertical-align: top;
 }
-#content td p {
+ td p {
 	font-size: 1.3em;
 }
-#content td h2 {
+ td h2 {
 	margin-top: 5px;
 }
-#content td h3 {
+ td h3 {
 	font-size: 1.4em;
 }
 
-#content td.rechts,
-#content td.right {
+ td.rechts,
+ td.right {
     text-align: right;
 }
-#content table.voll {
+ table.voll {
     margin: 0 0 20px 0;
     border-collapse: collapse;
     width:100%;
 }
-#content th.pro30 {
+ th.pro30 {
     width:30%;
 }
-#content td.bgeei { background-color:#e0ad12;width:3px;}
-#content td.bgmb { background-color:#8a9b00;width:3px;}
-#content td.bgww { background-color:#ad2624;width:3px;}
-#content td.bgcbi { background-color:#d97300;width:3px;}
-#content td.bginf { background-color:#6399ab;width:3px;}
+ td.bgeei { background-color:#e0ad12;width:3px;}
+ td.bgmb { background-color:#8a9b00;width:3px;}
+ td.bgww { background-color:#ad2624;width:3px;}
+ td.bgcbi { background-color:#d97300;width:3px;}
+ td.bginf { background-color:#6399ab;width:3px;}
 
-#content tr.ungerade td { background-color:#eaf0f6; }
-#content tr.gerade td { background-color:#f6f8fb; }
+ tr.ungerade td { background-color:#eaf0f6; }
+ tr.gerade td { background-color:#f6f8fb; }
 
-#content table.wechselfarbe tr td {
+ table.wechselfarbe tr td {
     background-color:#f6f8fb;
 }
-#content table.wechselfarbe tr:nth-child(odd) td {
+ table.wechselfarbe tr:nth-child(odd) td {
     background-color:#eaf0f6;
 }
-#content tr.white {
+ tr.white {
     background-color: white;
 }
-#content td.white {
+ td.white {
     background-color: white;
 }
-#content th.white {
+ th.white {
     background-color: white;
 }
 
-#content tfoot td {
+ tfoot td {
 		border-right: none;
 		background: #fff;
 	}
@@ -635,30 +642,30 @@ form .eingabe input {
 /*  ------------------------------------------------------
 BOX Links
 --------------------------------------------------------*/
-#content div.box_links,
-#content div.klein_box_links {
+ div.box_links,
+ div.klein_box_links {
     float: left;
     margin: 10px 20px 20px 0px;
     border: #999 1px solid;
     background: #EEEFF1;
 }
 
-#content div.klein_box_links {
+ div.klein_box_links {
     width: 200px; /*inline-styles per php !!*/
 }
 
-#content div.box_links h3,
-#content div.klein_box_links h3,
-#content div.box_links h4,
-#content div.klein_box_links h4 {
+ div.box_links h3,
+ div.klein_box_links h3,
+ div.box_links h4,
+ div.klein_box_links h4 {
     padding: 4px 6px 0 6px;
     margin: 0;
     font-weight: normal;
 	color: #575E68;
 }
 
-#content div.box_links p,
-#content div.klein_box_links p {
+ div.box_links p,
+ div.klein_box_links p {
     font-size: 0.7em;
     margin: 0 0 3px 0;
     padding: 1px 6px 0 6px;
@@ -669,30 +676,30 @@ BOX Links
 /*  ------------------------------------------------------
 BOX RECHTS
 --------------------------------------------------------*/
-#content div.box_rechts,
-#content div.klein_box_rechts {
+ div.box_rechts,
+ div.klein_box_rechts {
     float: right;
     margin: 10px 0 20px 20px;
     border: #999 1px solid;
     background: #EEEFF1;
 }
 
-#content div.klein_box_rechts {
+ div.klein_box_rechts {
     width: 200px; /*inline-styles per php !!*/
 }
 
-#content div.box_rechts h3,
-#content div.klein_box_rechts h3,
-#content div.box_rechts h4,
-#content div.klein_box_rechts h4 {
+ div.box_rechts h3,
+ div.klein_box_rechts h3,
+ div.box_rechts h4,
+ div.klein_box_rechts h4 {
     padding: 4px 6px 0 6px;
     margin: 3px 0 7px 0;
     font-weight: normal;
 	color: #575E68;
 }
 
-#content div.box_rechts p,
-#content div.klein_box_rechts p {
+ div.box_rechts p,
+ div.klein_box_rechts p {
     font-size: 0.7em;
     margin: 0 0 3px 0;
     padding: 1px 6px 0 6px;
@@ -703,7 +710,7 @@ BOX RECHTS
 /*  ------------------------------------------------------
 VOLLBOX
 --------------------------------------------------------*/
-#content div.vollbox {
+ div.vollbox {
     margin: 10px 0 20px 0;
     border: #999 1px solid;
     background: #EEEFF1;
@@ -711,15 +718,15 @@ VOLLBOX
 
 }
 
-#content div.vollbox h3,
-#content div.vollbox h4 {
+ div.vollbox h3,
+ div.vollbox h4 {
     padding: 4px 6px 0 6px;
     margin: 3px 0 7px 0;
     font-weight: normal;
 	color: #575E68;
 }
 
-#content div.vollbox p {
+ div.vollbox p {
     font-size: 0.7em !important;
     margin: 0 0 3px 0;
     padding: 1px 6px 0 6px;
@@ -738,12 +745,12 @@ div.box img {
 /*  ------------------------------------------------------
 NACH OBEN - LINK
 --------------------------------------------------------*/
-div#content p.noprint {
+ p.noprint {
     text-align: right;
 }
-div#content p.noprint a,
-div#content p.noprint a:link,
-div#content p.noprint a:visited {
+ p.noprint a,
+ p.noprint a:link,
+ p.noprint a:visited {
 
 }
 
@@ -760,94 +767,8 @@ div.indexliste-nachoben a:link,
 div.indexliste-nachoben a:visited {
 }
 
-/*  ------------------------------------------------------
-INHALTSUEBERSICHT
---------------------------------------------------------*/
-div#inhaltsuebersicht {
-}
 
-div#inhaltsuebersicht ul {
-    line-height: 200%;
-}
 
-div#inhaltsuebersicht ul li a {
-
-}
-
-div#inhaltsuebersicht ul li a dfn {
-    font-style: normal;
-    /*font-family: "Georgia", Garamond, Palatino, Times New Roman, Times serif;
-    font-weight: bold;*/
-}
-
-div#inhaltsuebersicht ul h2 a {
-    font-size: 1.4em;
-}
-
-div#inhaltsuebersicht ul h3 a{
-    font-size: 1.3em;
-    font-weight: bold;
-}
-
-div#inhaltsuebersicht ul h4,
-div#inhaltsuebersicht ul h5 {
-    font-size: 1.1em;
-}
-
-div#inhaltsuebersicht ul ul {
-
-}
-
-div#inhaltsuebersicht ul ul ul {
-}
-
-/*  ------------------------------------------------------
-GLOSSAR
---------------------------------------------------------*/
-div#glossar div.AlphaNavigation {
-}
-
-div#glossar div.AlphaNavigation ul {
-    list-style-type: none;
-    margin: 0 0 20px 0;
-    padding:0;
-}
-
-div#glossar div.AlphaNavigation ul li {
-    display: inline;
-    padding: 0 10px 0 0;
-    font-weight: bold;
-}
-
-/*  ------------------------------------------------------
-ALPHABET - LISTE
---------------------------------------------------------*/
-div#inhaltsuebersicht  div.alphabet-liste {
-}
-
-div.alphabet-index div.indexliste-nachoben  {
-    font-size: 0.76em;
-}
-
-div#inhaltsuebersicht  div.alphabet-liste ul {
-    list-style-type: none;
-    margin: 0 0 20px 0;
-    padding:0;
-}
-
-div#inhaltsuebersicht  div.alphabet-liste ul li {
-    display: inline;
-    padding: 0 10px 0 0;
-}
-
-/*  ------------------------------------------------------
-ALPHABET - INDEX
---------------------------------------------------------*/
-div#inhaltsuebersicht  div.alphabet-index {
-}
-
-div#inhaltsuebersicht  div.alphabet-index ul {
-}
 
 /*                                                                     */
 /* Typo-Variante sans-serif  - - - - - - - */
@@ -873,20 +794,6 @@ Definitionen fuer allgemeine Formulare
 --------------------------------------------------------*/
 
 
-/*  ------------------------------------------------------
-GLOSSAR
---------------------------------------------------------*/
-div#glossar div.AlphaNavigation ul li {
-    font: 1.4em "Tahoma", "Verdana", "Arial", sans-serif;
-    font-weight: bold;
-}
-
-/*  ------------------------------------------------------
-ALPHABET - LISTE
---------------------------------------------------------*/
-div#inhaltsuebersicht  div.alphabet-liste ul li {
-    font: 1.4em "Tahoma", "Verdana", "Arial", sans-serif;
-}
 
 /*  ------------------------------------------------------
 FOOTER
@@ -900,7 +807,7 @@ div#footer h2 {
 /*  ------------------------------------------------------
 Besondere Hinweisboxen
 --------------------------------------------------------*/
-#content div.hinweis_wichtig {
+ div.hinweis_wichtig {
     float:left;
     position:relative; /*fuer IE < 6 */
     width: 220px;
@@ -910,22 +817,22 @@ Besondere Hinweisboxen
     padding: 5px 2px 5px 65px;
     margin: 1em;
 }
-#content div.hinweis_wichtig {
+ div.hinweis_wichtig {
     border: 1px solid red;
     background-image: url(../images/important.png);
     background-repeat: no-repeat;
     background-position: left center;
 }
-#content div.hinweis_wichtig h3,
-#content div.hinweis_wichtig h4 {
+ div.hinweis_wichtig h3,
+ div.hinweis_wichtig h4 {
     font-weight: bold;
     font-size: 1.2em;
 }
-#content div.hinweis_wichtig p {
+ div.hinweis_wichtig p {
     font-weight: normal;
     font-size: 1em;
 }
-#content div.hinweis {
+ div.hinweis {
     float:left;
     font-size:.9em;
     line-height:1em;
@@ -933,44 +840,44 @@ Besondere Hinweisboxen
     margin: 1em;
     width: 300px;
 }
-#content div.hinweis h3,
-#content div.hinweis h4 {
+ div.hinweis h3,
+ div.hinweis h4 {
     font-weight: bold;
     font-size: 1.1em;
 }
-#content div.hinweis {
+ div.hinweis {
     border: 1px solid #ccc;
     background-image: url(../images/ktip.png);
     background-repeat: no-repeat;
     background-position: left center;
 }
-#content div.hinweis p {
+ div.hinweis p {
     font-weight: normal;
     font-size: 0.8em;
 }
-#content div.hinweis_rechts {
+ div.hinweis_rechts {
     float: right;
     font-size: 0.9em;
     padding: 5px 2px 5px 55px;
     margin: 1em;
     width: 40%;
 }
-#content div.hinweis_rechts {
+ div.hinweis_rechts {
     border: 1px solid #ccc;
     background-image: url(../images/ktip.png);
     background-repeat: no-repeat;
     background-position: left center;
 }
-#content div.hinweis_rechts h3,
-#content div.hinweis_rechts h4 {
+ div.hinweis_rechts h3,
+ div.hinweis_rechts h4 {
     font-weight: bold;
     font-size: 1.1em;
 }
-#content div.hinweis_rechts p {
+ div.hinweis_rechts p {
     font-weight: normal;
     font-size: 0.8em;
 }
-#content div.baustelle {
+ div.baustelle {
     float:left;
     position:relative; /*fuer IE < 6 */
     width: 220px;
@@ -979,19 +886,19 @@ Besondere Hinweisboxen
     padding: 5px 2px 5px 65px;
     margin: 1em;
 }
-#content div.baustelle {
+ div.baustelle {
     border: 1px solid #ccc;
     background-image: url(../images/package_settings.png);
     background-repeat: no-repeat;
     background-position: left center;
 }
 
-#content div.baustelle h3,
-#content div.baustelle h4 {
+ div.baustelle h3,
+ div.baustelle h4 {
     font-weight: bold;
     font-size: 1.2em;
 }
-#content div.baustelle p {
+ div.baustelle p {
     font-weight: normal;
     font-size: 1em;
 }
@@ -1035,27 +942,27 @@ div.bildbox_l{
 /*  ------------------------------------------------------
 BEITRÄGE
 --------------------------------------------------------*/
-div#content .post {
+ .post {
     margin: 10px 0;
 }
 
-div#content .post-title {
+ .post-title {
     margin-top: 15px;
 }
 
-div#content .pubdateinfo {
+ .pubdateinfo {
     font-size: .71em;
     font-style: italic;
     margin-bottom: 0;
 }
 
-div#content div.post-nav ul {
+ div.post-nav ul {
     list-style-type: none;
     margin: 10px 0 16px;
     color: #666F7A;
 }
 
-div#content div.post-nav ul li {
+ div.post-nav ul li {
     display: inline-block;
     width: 49%;
     white-space: nowrap;
@@ -1063,31 +970,31 @@ div#content div.post-nav ul li {
     overflow: hidden;
 }
 
-div#content div.post-nav ul li.back {
+ div.post-nav ul li.back {
     text-align: left;
 }
 
-div#content div.post-nav ul li.forward {
+ div.post-nav ul li.forward {
     text-align: right;
 }
-div#content .column1 .post-title h2,
-div#content .column2 .post-title h2 {
+ .column1 .post-title h2,
+ .column2 .post-title h2 {
     font-size: 1.1em;
 }
-div#content .columns hr.trenner {
+ .columns hr.trenner {
     clear: both;
     background-color: #ccc; /* Farbe für Opera und Firefox */
     color: #ccc; /* Farbe für Internet Explorer (IE) */
     border: 0;
     height: 1px;
 }
-div#content .sticky {
+ .sticky {
     border: 1px solid #0094D4;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
-div#content .column1 .sticky,
-div#content .column2 .sticky {
+ .column1 .sticky,
+ .column2 .sticky {
     width: 99%;
 }
 
@@ -1098,7 +1005,7 @@ div#content .column2 .sticky {
     font-style: italic;
     margin-bottom: 10px;
 }
-div#content .post-meta p {
+ .post-meta p {
     margin-bottom: 0;
 }
 .post-comments {
