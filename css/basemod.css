@@ -126,6 +126,7 @@
 	    font-size: 20px;
 	    color: #1559a6;
 	    text-align: right;
+	    line-height: 26px;
 	}
 
 	#kopf #header-box .titel {
@@ -287,7 +288,10 @@
 		left: 15px;
 		top: 230px;
 	}
-
+	div#kopf div#suche p {
+	    font-size: 100%;
+	    margin: 0;
+	}
 	div#kopf div#suche h2,
 	div#kopf div#suche p label {
 		position:absolute;
