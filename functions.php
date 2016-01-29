@@ -21,7 +21,11 @@ if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 
 
 if ( ! isset( $content_width ) )   $content_width = $defaultoptions['content-width'];
-require_once ( get_template_directory() . '/theme-options.php' );
+require_once( get_template_directory() . '/inc/theme-options.php' );
+require_once( get_template_directory() . '/inc/helper-functions.php' );
+require_once( get_template_directory() . '/inc/shortcodes.php' );
+require_once( get_template_directory() . '/inc/widgets.php' );
+
 
 add_action( 'after_setup_theme', 'wke2014_setup' );
 
@@ -189,7 +193,6 @@ function wke2014_setup() {
 }
 endif;
 
-require( get_template_directory() . '/inc/widgets.php' );
 
 
 
@@ -277,24 +280,50 @@ add_action( 'wp_enqueue_scripts', function() {
 
 
 
-
-
+/* 
+ * Scripts und CSS fuer Adminbereich 
+ */
 function wke2014_admin_style() {
-
-
-    wp_register_style( 'themeadminstyle', get_template_directory_uri().'/css/admin.css' );
-    wp_enqueue_style( 'themeadminstyle' );
+    
+    wp_register_style( 'themeadminstyle', get_template_directory_uri().'/css/admin.css' );	   
+    wp_enqueue_style( 'themeadminstyle' );	
+    wp_enqueue_style( 'dashicons' );
     wp_enqueue_media();
-    wp_register_script('themeadminscripts', get_template_directory_uri().'/js/admin.js', array('jquery'));
-    wp_enqueue_script('themeadminscripts');
-
-    if(is_admin()) {
-	wp_enqueue_script('jquery-ui-datepicker');
-	wp_enqueue_script( 'wp-link' );
-    }
-
+    wp_enqueue_script('jquery-ui-datepicker');
+    wp_register_script('themeadminscripts', get_template_directory_uri().'/js/admin.js', array('jquery'));    
+    wp_enqueue_script('themeadminscripts');	   
 }
 add_action( 'admin_enqueue_scripts', 'wke2014_admin_style' );
+
+
+
+/*
+ *  Ersetzt das wpLink-Skript durch ein benutzerdefiniertes Skript.
+ */
+add_action('admin_enqueue_scripts', function () {
+    $suffix = defined('WP_DEBUG') && WP_DEBUG ? '' : '.min';
+
+    // Erst deaktivieren wir das Standard-Wordpress-Skript
+    wp_deregister_script('wplink');
+
+    // Dann ersetzen wir es durch unser benutzerdefiniertes wpLink-Skript
+    wp_enqueue_script('rrze-wplink', get_template_directory_uri() . "/js/rrze-wplink$suffix.js", array('jquery'), FALSE, TRUE);
+
+    // Lokalisierung des Skripts
+    $localized = array(
+            'title' => __('Link einfügen/ändern', 'fau'),
+            'update' => __('Aktualisieren', 'fau'),
+            'save' => __('Link hinzufügen', 'fau'),
+            'noTitle' => __('(kein Titel)', 'fau'),
+            'noMatchesFound' => __('Keine Ergebnisse gefunden.', 'fau')
+    );
+
+    wp_localize_script('rrze-wplink', 'wpLinkL10n', $localized);
+    
+}, 999);
+
+
+
 
 
 
@@ -1076,45 +1105,6 @@ function short_title($after = '...', $length = 6, $textlen = 10) {
 endif;
 
 
-/**
-class My_Walker_Nav_Menu extends Walker_Nav_Menu {
- *
- */
-    /**
-     * Start the element output.
-     *
-     * @param  string $output Passed by reference. Used to append additional content.
-     * @param  object $item   Menu item data object.
-     * @param  int $depth     Depth of menu item. May be used for padding.
-     * @param  array $args    Additional strings.
-     * @return void
-     */
-/**
-    public function start_el( &$output, $item, $depth, $args ) {
-        if ( '-' === $item->title )
-        {
-            // you may remove the <hr> here and use plain CSS.
-            $output .= '<li class="menu_separator"><hr>';
-        } else{
-            parent::start_el( $output, $item, $depth, $args );
-        }
-    }
- *
- */
-    /* Klasse has_children einfuegen */
-/**
-    public function display_element($el, &$children, $max_depth, $depth = 0, $args, &$output){
-        $id = $this->db_fields['id'];
-
-        if(isset($children[$el->$id]))
-            $el->classes[] = 'has_children';
-
-        parent::display_element($el, $children, $max_depth, $depth, $args, $output);
-    }
-}
- *
- */
-
 
 /* Interne Links relativ ausgeben */
 
@@ -1180,62 +1170,6 @@ add_filter('the_content', function($content) {
   return make_relative_site_links_in_content($content);
 }, 99);
 
-
-/* Content-Slider */
-
-function contentSlider($atts) {
-
-	// Attributes
-	extract( shortcode_atts(
-		array(
-			"type" => '',
-			"anzahl" => '',
-			"kategorie" => '',
-			'orderby'   => 'rand',
-		), $atts, 'content-slider' )
-	);
-	$type = sanitize_text_field($type);
-	$orderby = sanitize_text_field($orderby);
-	$kategorie = sanitize_text_field($kategorie);
-	$anzahl = sanitize_text_field($anzahl);
-	// Code
-	$args = array(
-		'post_type'			=> $type,
-		'posts_per_page'	=> $anzahl,
-		'category_name'		=> $kategorie,
-		'orderby'   => $orderby	    );
-	$the_query = new WP_Query( $args );
-	$output = '';
-	if ( $the_query->have_posts() ) :
-		$output = '<div class="flexslider">';
-		$output .= '<ul class="slides">';
-		while ( $the_query->have_posts() ) : $the_query->the_post();
-			$id = get_the_ID();
-			$output .= '<li>';
-			$output .= '<h2>' . get_the_title() . '</h2>';
-			if (has_post_thumbnail()) {
-				$output .= get_the_post_thumbnail($id,'teaser-thumb',array('class'	=> 'attachment-teaser-thumb'));
-			}
-			else {
-				$output .= '<div class="infoimage" style="width:120px;float:left;margin-right:10px;">' . get_wke2014_firstpicture() . '</div>';
-			}
-			$output .=  get_wke2014_custom_excerpt($length = 200, $continuenextline = 1, $removeyoutube = 1);
-			$output .= '</li>';
-		endwhile;
-		$output .= '</ul>';
-		$output .= '</div>';
-	endif;
-	wp_reset_postdata();
-
-
-	wp_enqueue_style( 'basemod_flexslider', get_template_directory_uri() . '/css/basemod_flexslider.css');
-	wp_enqueue_script( 'jquery-flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'), '2.2.0', true);
-    wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/flexslider.js', array(), false, true);
-	return $output;
-
-}
-
-add_shortcode( 'content-slider', 'contentSlider' );
 
 
 /* Add Excerpt, Category and Tags to Page */

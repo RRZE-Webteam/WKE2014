@@ -87,29 +87,30 @@ function vortrag_metabox_content( $post ) {
 	wp_nonce_field( plugin_basename( __FILE__ ), 'vortrag_metabox_content_nonce' );
 	?>
 
-	<p>
-		<label for="vortrag_kurztext"><?php _e( "Kurzbeschreibung", 'wke2014' ); ?>:</label>
-		<br />
-		<textarea class="widefat" name="vortrag_kurztext" cols="70" rows="3" id="vortrag_kurztext" /><?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_kurztext', true ) ); ?></textarea>
-	</p>
-	<p>
-		<label for="vortrag_text"><?php _e( "Detaillierte Beschreibung", 'wke2014' ); ?>:</label>
-		<br />
-		<textarea class="widefat" name="vortrag_text" cols="70" rows="6" id="vortrag_text" /><?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_text', true ) ); ?></textarea>
-	</p>
-	<p>
-		<label for="vortrag_referentname"><?php _e( "Referent (Vorname Nachname)", 'wke2014' ); ?>:</label>
-		<br />
-		<input class="widefat" type="text" name="vortrag_referentname"
-		       id="vortrag_referentname" value="<?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_referentname', true ) ); ?>" size="30" />
-	</p>
-	<p>
-		<label for="vortrag_referentlink"><?php _e( "Link zur Seite mit dem Autor", 'wke2014' ); ?>:</label>
-		<br />
-		<input  type="text" name="vortrag_referentlink"
-			id="vortrag_referentlink" value="<?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_referentlink', true ) ); ?>" size="30" />
-		<button class="link-btn"><?php _e( "Link einfügen", 'wke2014' ); ?></button>
-	</p>
+
+	<?php 
+	$kurztext = get_post_meta( $post->ID, 'vortrag_kurztext', true );
+	fau_form_textarea('vortrag_kurztext', $kurztext, 'Kurzbeschreibung', 70, 3, '');
+
+	$kurztext = get_post_meta( $post->ID, 'vortrag_text', true );
+	fau_form_wpeditor('vortrag_text', $kurztext, 'Detaillierte Beschreibung', '', false);
+	
+	$name = get_post_meta( $post->ID, 'vortrag_referentname', true );
+	fau_form_text('vortrag_referentname', $name, __('Referent (Vorname Nachname)','fau'));
+		
+		
+	$url = get_post_meta( $post->ID, 'vortrag_referentlink', true );
+	fau_form_text('vortrag_referentlink', $url, 'Link zur Seite des Referenten');
+	
+	
+	$name = get_post_meta( $post->ID, 'vortrag_referentname2', true );	
+	fau_form_text('vortrag_referentname2', $name, __('Zweiter Referent (Vorname Nachname)','fau'));
+	
+	$url = get_post_meta( $post->ID, 'vortrag_referentlink2', true );
+	fau_form_text('vortrag_referentlink2', $url, 'Link zur Seite des zweiten Referenten');
+	?>
+	
+	
 
 	<p>
 		<label for="vortrag_datum"><?php _e( "Datum", 'wke2014' ); ?>:</label>
@@ -174,28 +175,14 @@ function vortrag_metabox_content( $post ) {
 
 	    </select>
 	</p>
+	<?php 
+	
+	$url = get_post_meta( $post->ID, 'vortrag_aufzeichnung', true );
+	fau_form_text('vortrag_aufzeichnung', $url, 'Geben Sie hier die Webadresse (URL) ein, die zur Aufzeichnung (Videportal) führt');
+	
+	$url = get_post_meta( $post->ID, 'vortrag_folien', true );
+	fau_form_text('vortrag_folien', $url, 'Geben Sie hier die Webadresse (URL) ein, die zu Vortragsfolien zeigt');
 
-
-
-
-
-
-	<p>
-		<label for="vortrag_aufzeichnung"><?php _e( "Geben Sie hier die Webadresse (URL) ein, die zur Aufzeichnung (Videportal) führt", 'wke2014' ); ?>:</label>
-		<br />
-		<input class="url" type="text" name="vortrag_aufzeichnung"
-		       id="vortrag_aufzeichnung" value="<?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_aufzeichnung', true ) ); ?>" size="30" />
-	</p>
-	<p>
-		<label for="vortrag_folien"><?php _e( "Geben Sie hier die Webadresse (URL) ein, die zu Vortragsfolien zeigt.", 'wke2014' ); ?>:</label>
-		<br />
-		<input class="url" type="text" name="vortrag_folien"
-		       id="vortrag_folien" value="<?php echo esc_attr( get_post_meta( $post->ID, 'vortrag_folien', true ) ); ?>" size="30" />
-	</p>
-
-
-
-	<?php
 
 }
 add_action( 'add_meta_boxes', 'wke2014_vortrag_metabox' );
@@ -222,38 +209,29 @@ function vortrag_metabox_save( $post_id ) {
 	}
 
 	$url = $_POST['vortrag_aufzeichnung'];
-	if (filter_var($url, FILTER_VALIDATE_URL)) {
-	    update_post_meta( $post_id, 'vortrag_aufzeichnung', $url );
-	}
+	fau_save_standard('vortrag_aufzeichnung', $url, $post_id, 'url');
+	
 	$url = $_POST['vortrag_folien'];
-	if (filter_var($url, FILTER_VALIDATE_URL)) {
-	    update_post_meta( $post_id, 'vortrag_folien', $url );
-	}
+	fau_save_standard('vortrag_folien', $url, $post_id, 'url');
+	
 	$url = $_POST['vortrag_referentlink'];
-	if (filter_var($url, FILTER_VALIDATE_URL)) {
-	    update_post_meta( $post_id, 'vortrag_referentlink', $url );
-	}
+	fau_save_standard('vortrag_referentlink', $url, $post_id, 'url');
+	
+	$url = $_POST['vortrag_referentlink2'];
+	fau_save_standard('vortrag_referentlink2', $url, $post_id, 'url');
+		
+
+	fau_save_standard('vortrag_kurztext',  $_POST['vortrag_kurztext'], $post_id, 'textarea');
+	fau_save_standard('vortrag_text',  $_POST['vortrag_text'], $post_id, 'wpeditor');
 
 
+	fau_save_standard('vortrag_referentname',  $_POST['vortrag_referentname'], $post_id, 'text');
+	fau_save_standard('vortrag_referentname2',  $_POST['vortrag_referentname2'], $post_id, 'text');
 
-	if( isset( $_POST[ 'vortrag_text' ] ) ) {
-	    update_post_meta( $post_id, 'vortrag_text',  $_POST[ 'vortrag_text' ]  );
-	}
-	if( isset( $_POST[ 'vortrag_kurztext' ] ) ) {
-	    update_post_meta( $post_id, 'vortrag_kurztext',  $_POST[ 'vortrag_kurztext' ] );
-	}
-	if( isset( $_POST[ 'vortrag_referentname' ] ) ) {
-	    update_post_meta( $post_id, 'vortrag_referentname', sanitize_text_field( $_POST[ 'vortrag_referentname' ] ) );
-	}
-	if( isset( $_POST[ 'vortrag_datum' ] ) ) {
-	    update_post_meta( $post_id, 'vortrag_datum', sanitize_text_field( $_POST[ 'vortrag_datum' ] ) );
-	}
-	if( isset( $_POST[ 'vortrag_beginn' ] ) ) {
-	    update_post_meta( $post_id, 'vortrag_beginn', sanitize_text_field( $_POST[ 'vortrag_beginn' ] ) );
-	}
-	if( isset( $_POST[ 'vortrag_raum' ] ) ) {
-	    update_post_meta( $post_id, 'vortrag_raum', sanitize_text_field( $_POST[ 'vortrag_raum' ] ) );
-	}
+	fau_save_standard('vortrag_datum',  $_POST['vortrag_datum'], $post_id, 'text');
+	fau_save_standard('vortrag_beginn',  $_POST['vortrag_beginn'], $post_id, 'text');
+	fau_save_standard('vortrag_raum',  $_POST['vortrag_raum'], $post_id, 'text');
+
 
 
 }
@@ -354,7 +332,9 @@ function vortrag_shortcode( $atts ) {
 			    $vortrag_kurztext = get_post_meta( $post_id, 'vortrag_kurztext', true );
 			    $vortrag_text = get_post_meta( $post_id, 'vortrag_text', true );
 			    $vortrag_referentname = get_post_meta( $post_id, 'vortrag_referentname', true );
+			    $vortrag_referentname2 = get_post_meta( $post_id, 'vortrag_referentname2', true );
 			    $vortrag_referentlink = get_post_meta( $post_id, 'vortrag_referentlink', true );
+			    $vortrag_referentlink2 = get_post_meta( $post_id, 'vortrag_referentlink2', true );
 			    $vortrag_datum = get_post_meta( $post_id, 'vortrag_datum', true );
 			    $vortrag_beginn = get_post_meta( $post_id, 'vortrag_beginn', true );
 			    $vortrag_raum = get_post_meta( $post_id, 'vortrag_raum', true );
@@ -378,7 +358,7 @@ function vortrag_shortcode( $atts ) {
 				$datum = array("-","-","-");
 			    }
 
-		        if (isset($id) && isset($format) &&($format=='short')) {
+			    if (isset($id) && isset($format) &&($format=='short')) {
 					$out .= ''
 						. '<span class="titel">'
 						.$title
@@ -390,26 +370,50 @@ function vortrag_shortcode( $atts ) {
 					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
 					    $out .= '</a>';
 					}
+					
+					if ((isset($vortrag_referentname2)) && (strlen(trim($vortrag_referentname2))>0)) {
+					    $out .= ', ';
+					    if (isset($vortrag_referentlink2)&& (strlen(trim($vortrag_referentlink2))>0)) {
+						$out .= '<a href="'.$vortrag_referentlink2.'" title="'.$vortrag_referentname2.'">';
+					    }
+					    $out .= $vortrag_referentname2;
+					    if (isset($vortrag_referentlink2)&& (strlen(trim($vortrag_referentlink2))>0)) {
+						$out .= '</a>';
+					    }
+					}
 					$out .= ')</span>';
-				}
+					
+					
+			    } elseif (isset($format) && ($format=='table') && ($single==0)) {
+				    $out .= "<tr class=\"vortrag\">\n";
+				    $out .= '<th scope="row">'.$title.'</th>';
+				    $out .= '<td>'.$vortrag_kurztext.'</td>';
+				    if (isset($vortrag_referentname)) {
+					    $out .= '<td>';
+					    if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
+						$out .= '<a href="'.$vortrag_referentlink.'" title="'.$vortrag_referentname.'">';
+					    }
+					    $out .= $vortrag_referentname;
 
-				elseif (isset($format) && ($format=='table') && ($single==0)) {
-				$out .= "<tr class=\"vortrag\">\n";
-				$out .= '<th scope="row">'.$title.'</th>';
-				$out .= '<td>'.$vortrag_kurztext.'</td>';
-				if (isset($vortrag_referentname)) {
-					$out .= '<td>';
-					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
-					    $out .= '<a href="'.$vortrag_referentlink.'" title="'.$vortrag_referentname.'">';
-					}
-					$out .= $vortrag_referentname;
+					    if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
+						$out .= '</a>';
+					    }
+					    
+					   if ((isset($vortrag_referentname2)) && (strlen(trim($vortrag_referentname2))>0)) {
+						$out .= ', ';
+						if (isset($vortrag_referentlink2)&& (strlen(trim($vortrag_referentlink2))>0)) {
+						    $out .= '<a href="'.$vortrag_referentlink2.'" title="'.$vortrag_referentname2.'">';
+						}
+						$out .= $vortrag_referentname2;
 
-					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
-					    $out .= '</a>';
+						if (isset($vortrag_referentlink2)&& (strlen(trim($vortrag_referentlink2))>0)) {
+						    $out .= '</a>';
+						}
+					    }
+					    
+					    $out .= '</td>';
 					}
-					$out .= '</td>';
-				    }
-				$out .= "</tr>\n";
+				    $out .= "</tr>\n";
 			    } else {
 
 
@@ -420,7 +424,7 @@ function vortrag_shortcode( $atts ) {
 				    $out .= '<h2 class="summary">'.$title.'</h2>';
 
 				    if ((isset($vortrag_referentname)) && ($showautor==1)) {
-					$out .= '<p class="autor">';
+					$out .= '<p><span class="autor">';
 					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
 					    $out .= '<a href="'.$vortrag_referentlink.'">';
 					}
@@ -428,6 +432,20 @@ function vortrag_shortcode( $atts ) {
 
 					if (isset($vortrag_referentlink)&& (strlen(trim($vortrag_referentlink))>0)) {
 					    $out .= '</a>';
+					}
+					$out .= '</span>';
+					
+					if ((isset($vortrag_referentname2)) && (strlen(trim($vortrag_referentname2))>0)) {
+					    $out .= ', <span class="autor">';
+					    if (isset($vortrag_referentlink2) && (strlen(trim($vortrag_referentlink2))>0)) {
+						$out .= '<a href="'.$vortrag_referentlink2.'">';
+					    }
+					    $out .= $vortrag_referentname2;
+
+					    if (isset($vortrag_referentlink2)&& (strlen(trim($vortrag_referentlink2))>0)) {
+						$out .= '</a>';
+					    }
+					    $out .= '</span>';
 					}
 					$out .= '</p>';
 				    }
@@ -508,4 +526,4 @@ function vortrag_shortcode( $atts ) {
 }
 add_shortcode( 'vortrag', 'vortrag_shortcode' );
 
-?>
+
