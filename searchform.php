@@ -5,7 +5,7 @@
 ?>
 
         <div id="suche">
-          <h2><a name="suche">Suche</a></h2>
+          <h2>Suche</h2>
             <form method="get" id="searchform" action="<?php bloginfo('url'); ?>">
                <p>
 	               <label for="s">Suche:</label>

@@ -89,7 +89,7 @@ global $options;
 		<div id="main">  <!-- begin: main -->
       		<div id="menu">  <!-- begin: menu -->
 		        <div id="bereichsmenu">
-		         	<h2><a name="bereichsmenumarke" id="bereichsmenumarke">Navigation</a></h2>
+		         	<h2>Navigation</h2>
 
 			    <?php
                                 if ( has_nav_menu( 'primary' ) ) {

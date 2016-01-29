@@ -23,7 +23,6 @@ global $options;
 		</nav>
 	       <?php } ?>
               <div id="zusatzinfo" class="noprint">  <!-- begin: zusatzinfo -->
-		<a id="zusatzinfomarke" name="zusatzinfomarke"></a>
 		    <?php if ( is_active_sidebar( 'zusatzinfo-area' ) ) {
 			    dynamic_sidebar( 'zusatzinfo-area' );
 			 } ?>
