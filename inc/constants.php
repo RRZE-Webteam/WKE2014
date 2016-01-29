@@ -5,7 +5,7 @@
  **/
 
 $defaultoptions = array(
-    'js-version'                    => '1.1',
+    'js-version'                    => '1.11',
     'default-color'		    => 'e6e6e6',
     'thumbnail-width'		    => 624,
     'thumbnail-height'		    => 9999,
@@ -88,21 +88,21 @@ $defaultoptions = array(
     'teaser-floating-halfwidth'	    => 1,
     'teaser-dateline-halfwidth'    => 0, /* 1 = show Date on line up of the text if no datebox */
 
-    'headerbox-datum'		    => '20.03.<br />+ 21.03.',
-    'headerbox-title'		    => 'Webkongress <br /> Erlangen <span class="jahr">2014</span>',
+    'headerbox-datum'		    => '7.3.- 9.3.',
+    'headerbox-title'		    => 'Webkongress Erlangen <span class="jahr">2016</span>',
     'text-startseite'		    =>  __( 'Startseite', 'wke2014' ),
     'default_text_title_home_backlink'	=>  __( 'Zur&uuml;ck zur Startseite', 'wke2014' ),
 
     'default_footerlink_key'	    => 'Fakultaeten',
 
     'aktiv-buttons'			=> 1,
-    'aktiv-anmeldebutton'		=> 1,
-    'url-anmeldebutton'			=> 'http://de.amiando.com/wke2014.html',
+    'aktiv-anmeldebutton'		=> 0,
+    'url-anmeldebutton'			=> 'https://eveeno.com/wke2016',
     'title-anmeldebutton'		=> 'Tickets kaufen',
     'color-anmeldebutton'		=> 'gruen',
 
-    'aktiv-cfpbutton'			=> 1,
-    'url-cfpbutton'			=> '/programm/vortragsvorschlag-einreichen-call-for-paper/',
+    'aktiv-cfpbutton'			=> 0,
+    'url-cfpbutton'			=> '/call-for-paper/',
     'title-cfpbutton'			=> 'Vortrag einreichen',
     'color-cfpbutton'			=> 'gelb',
 
@@ -139,6 +139,8 @@ $vortragsraeume = array(
 			"H12" => __('Hörsaal 12 (176 Plätze)', 'wke2014'),
 			"H13" => __('Hörsaal 13 (121 Plätze)', 'wke2014'),
 			"Heinrich Lades Halle" => __('Heinrich Lades Halle', 'wke2014'),
+			"Redoutensaal" => __('Redoutensaal', 'wke2014'),
+			"Palais Stutterheim" => __('Palais Stutterheim', 'wke2014'),
 
 		    );
 

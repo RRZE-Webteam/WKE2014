@@ -20,12 +20,12 @@ global $options;
 
 	    <div id="logo">
 		    <p>
-		    <?php if ( ! is_home() ) { ?>
+		    <?php if (! is_front_page() ) { ?>
 			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo $options['default_text_title_home_backlink']; ?>" rel="home" class="logo">
 		    <?php } ?>
 		    <img src="<?php header_image(); ?>" alt="<?php bloginfo( 'name' ); ?>">
 		<?php
-		if ( ! is_home() ) { ?> </a>  <?php } ?>
+		if ( ! is_front_page()) { ?> </a>  <?php } ?>
 		    </p>
 
 	    </div>
