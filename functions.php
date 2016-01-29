@@ -1125,26 +1125,22 @@ add_action( 'template_redirect', 'rw_relative_urls' );
     // - In sitemap by WordPress SEO plugin
     if ( is_feed() || get_query_var( 'sitemap' ) )
 	 return;
-    $filters = array(
-    'post_link',
-    'post_type_link',
-    'page_link',
-    'attachment_link',
-    'get_shortlink',
-    'post_type_archive_link',
-    'get_pagenum_link',
-    'get_comments_pagenum_link',
-    'term_link',
-    'search_link',
-    'day_link',
-    'month_link',
-    'year_link',
-
-    );
-    foreach ( $filters as $filter )
-    {
-    add_filter( $filter, 'wp_make_link_relative' );
-    }
+	$filters = array(
+	    'post_type_link',
+	    'attachment_link',
+	    'get_shortlink',
+	    'post_type_archive_link',
+	    'get_pagenum_link',
+	    'get_comments_pagenum_link',
+	    'term_link',
+	    'search_link',
+	    'day_link',
+	    'month_link',
+	    'year_link',
+	);
+	foreach ( $filters as $filter ) {
+	    add_filter( $filter, 'wp_make_link_relative' );
+	}
     }
 
 if ( ! function_exists( 'make_relative_site_links_in_content' ) ) :
@@ -1256,3 +1252,12 @@ function my_add_categories_to_pages() {
 	register_taxonomy_for_object_type('category', 'page');
 }
 add_action( 'admin_init', 'my_add_categories_to_pages' );
+
+
+
+function remove_invalid_formal_language($language_attributes) {
+    return preg_replace('/([a-z]+)\-([A-Z]+)\-formal\"/', '$1-$2"', $language_attributes);
+ //   return preg_replace('/([a-z]+)\-([A-Z]+)\-formal\"/', '$1-$2-x-formal"', $language_attributes);
+}
+
+add_filter('language_attributes', 'remove_invalid_formal_language');
