@@ -487,27 +487,22 @@
 	/*  ------------------------------------------------------
 	MAIN - MENU - KURZINFO
 	--------------------------------------------------------*/
-	div#main div#menu div#kurzinfo h2 {
+	.kurzinfo h2 {
 		font-size: 1.1em;
 		font-weight: bold;
 		color: #2D2D2D;
 	}
 
-	div#main div#menu div#kurzinfo p {
+	.kurzinfo p {
 		margin: 10px 0 16px 0;
 		line-height: 180%;
 		font-size: 0.7em;
 		color: #666;
 	}
-	div#main div#menu div#kurzinfo div {
+	.kurzinfo div {
 		padding: 10px 0px;
 	}
 
-	/*  ------------------------------------------------------
-	MAIN - MENU - INHALTSINFO
-	--------------------------------------------------------*/
-	div#main div#inhaltsinfo {
-	}
 
 	/*  ------------------------------------------------------
 	MAIN - SIDEBAR

@@ -2,12 +2,9 @@
 global $options;
 ?>
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html <?php language_attributes(); ?> class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html <?php language_attributes(); ?> class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html <?php language_attributes(); ?> class="ie8"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html <?php language_attributes(); ?>> <!--<![endif]-->
+<html <?php language_attributes(); ?>> 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <?php if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false)) { ?><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><?php } ?>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <title><?php wp_title( '|', true, 'right' ); ?></title>
     <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -18,8 +15,6 @@ global $options;
 <body <?php body_class(); ?>>  <!-- begin: body -->
   <div class="page_margins">  <!-- begin: page_margins -->
     <div id="seite" class="page">  <!-- begin: seite -->
-      <a name="seitenmarke" id="seitenmarke"></a>
-
       <header><div id="kopf">  <!-- begin: kopf -->
 
 
@@ -44,7 +39,6 @@ global $options;
 		    </div>
 		</div>
 	    <?php } ?>
-
 	    <?php get_search_form(); ?>
 
 	    <div id="titel">
@@ -73,9 +67,9 @@ global $options;
 	    <div id="sprungmarken">
 	      <h2>Sprungmarken</h2>
 	      <ul>
-			<li class="first"><a href="#contentmarke">Zum Inhalt</a><span class="skip">. </span></li>
-			<li><a href="#bereichsmenumarke">Zur Navigation</a><span class="skip">. </span></li>
-			<li class="last"><a href="#sidebar">Zu sonstigen Informationen</a><span class="skip">. </span></li>
+			<li class="first"><a href="#content">Zum Inhalt</a><span class="skip">. </span></li>
+			<li><a href="#navigation">Zur Navigation</a><span class="skip">. </span></li>
+			<li class="last"><a href="#footer">Nach unten</a><span class="skip">. </span></li>
 	      </ul>
 	    </div>
 	    <?php if ( has_nav_menu( 'targetmenue' ) ) { ?>
@@ -123,7 +117,6 @@ global $options;
 
 
 	    	<div id="content">  <!-- begin: content -->
-	        <a name="contentmarke" id="contentmarke"></a>
 
 
 

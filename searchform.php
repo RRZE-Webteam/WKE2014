@@ -8,7 +8,7 @@
           <h2><a name="suche">Suche</a></h2>
             <form method="get" id="searchform" action="<?php bloginfo('url'); ?>">
                <p>
-	               <label for="suchbegriff">Suche:</label>
+	               <label for="s">Suche:</label>
 	               <input id="s" name="s" type="text" value="<?php echo $querystring; ?>" 
 				   onfocus="if(this.value=='<?php echo $querystring; ?>')this.value='';" 
 				   onblur="if(this.value=='')this.value='<?php echo $querystring; ?>';" 
