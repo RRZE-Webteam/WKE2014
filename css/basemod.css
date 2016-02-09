@@ -966,7 +966,7 @@
 	/*  ------------------------------------------------------
 	MELDUNGEN
 	--------------------------------------------------------*/
-	#content div.meldung {
+	.meldung {
 	   border: 1px solid #D5DADD;
 	   background-color: #F4F3EB;
 	   background-image: url(/grafiken/techfak/buttons_transparent.gif);
@@ -1162,91 +1162,91 @@
 	KALENDER
 	--------------------------------------------------------*/
 
-	div#content div.kalender div.kalenderkopf {
+	.kalender div.kalenderkopf {
 	/*	margin: 0px 0px 20px 0px;*/
 		display: table;
 		width: 100%;
 	}
 
-	div#content div.kalender div.kalenderkopf div.menu {
+	.kalender div.kalenderkopf div.menu {
 		float: left;
 	}
-	div#content div.kalender div.kalenderkopf div.quicknavi {
+	.kalender div.kalenderkopf div.quicknavi {
 		float: right;
 	}
 
-	div#content div.kalender option {
+	.kalender option {
 		padding: 0px 10px 0px 0px;
 	}
 
-	div#content div.kalender div.kalendercontent a {
+	.kalender div.kalendercontent a {
 		font-weight:bold;
 	}
 
-	div#content div.kalender div.kalendercontent td.datum {
+	.kalender div.kalendercontent td.datum {
 		width:20%;
 	}
 
-	div#content div.kalender div.kalendercontent table, div#content div.kalendertabelle table {
+	.kalender div.kalendercontent table, 
+	.kalendertabelle table {
 		width:100%;
 	}
 
-	div#content div.kalender table td.datum, div#content div.kalendertabelle td.datum {
+	.kalender table td.datum, 
+	.kalendertabelle td.datum {
 		font-weight: bold;
 		background: #fff;
 		color: #3F3F3F;
 		width: 15%;
 	}
 
-	div#content div.kalender div.kalendercontent td.spalte1 {
+	.kalender div.kalendercontent td.spalte1 {
 		font-weight: bold;
 		background: #fff;
 		color: #3F3F3F;
 		vertical-align: top;
 	}
 
-	div#content div.kalender div.kalendersuche td.spalte2 {
-	}
+	
 
-	div#content div.kalender fieldset {
+	.kalender fieldset {
 		width:100%;
 	}
 
-	div#content div.error {
+	.error {
 		border-left: 2px solid red;
 		border-right: 2px solid red;
 		background: #FFD5D5;
 		padding: 5px 5px 5px 5px;
 	}
 
-	div.kalender #formular .dateneingabe input, form .eingabe input {
+	.kalender #formular .dateneingabe input, 
+	form .eingabe input {
 		margin: 4px 0px 0px 0px;
 	}
 
-	div#zusatzinfo div.box div.veranstaltung {
-	}
 
-	div#zusatzinfo div.box div.veranstaltung div.datum {
+	#zusatzinfo div.box div.veranstaltung div.datum {
 		margin: 0px 3px 0px 3px;
 		font-weight: bold;
 	}
 
-	div#zusatzinfo div.box div.veranstaltung div.content {
+	#zusatzinfo div.box div.veranstaltung div.content {
 		color: #333;
 		padding: 0px 0px 0px 15px;
 	}
-	div#zusatzinfo div.box div.weitereveranst {
+	#zusatzinfo div.box div.weitereveranst {
 		width:100%;
 		background: #9BBBCF;
 		margin: 5px 0px 0px 0px;
 		border-top: 1px solid #D1D1D1;
 	}
 
-	div#zusatzinfo div.box div.weitereveranst a {
+	#zusatzinfo div.box div.weitereveranst a {
 		font-weight: bold;
 		color: #666666;
 	}
-	div#zusatzinfo div.box img {
+	#zusatzinfo div.box img {
 		margin: 5px 2px 0px 5px;
 	}
 
@@ -1409,7 +1409,7 @@
 		Webdesign: #66b32d;
 	*/
 
-div#content .accordion h2 {
+.accordion h2 {
 	cursor:pointer;
 	padding: 3px 0;
 	color:#fff;
@@ -1418,54 +1418,64 @@ div#content .accordion h2 {
 	letter-spacing: .12em;
 	font-size: 1.05em;
 }
-div#content .accordion h2:before {
+.accordion h2:before {
 		content: "\25BE";
 		width: 20px;
 		display: inline-block;
 }
-div#content .accordion h2.closed:before {
+.accordion h2.closed:before {
 		content: "\25B8";
 }
-div#content .accordion h2.cms {
+.accordion h2.gelb, 
+.accordion h2.cms {
 	background-color: #fcd800;
 	border-bottom: 2px solid #FEC43F;
 }
-div#content .accordion h2.barrierefreiheit {
+.accordion h2.blau, 
+.accordion h2.barrierefreiheit {
 	background-color: #1559a6;
 	border-bottom: 2px solid #07376C;
 }
-div#content .accordion h2.webdesign {
+.accordion h2.gruen,
+.accordion h2.webdesign {
 	background-color: #66b32d;
 	border-bottom: 2px solid #6A7E10;
 }
-#content .vortragsliste table th,
-#content .vortragsliste table td {
+.vortragsliste table th,
+.vortragsliste table td {
 	border-right: none;
 	background-color: transparent;
 }
-#content .cms table th,
-#content .cms table td {
+.gelb table th,
+.gelb table td,
+.cms table th,
+.cms table td {
 	border-bottom: 1px solid #fcd800;
 }
-#content .barrierefreiheit table th,
-#content .barrierefreiheit table td {
+.blau table th,
+.blau table td,
+.barrierefreiheit table th,
+.barrierefreiheit table td {
 	border-bottom: 1px solid #1559a6;
 }
-#content .webdesign table th,
-#content .webdesign table td {
+
+.gruen table th,
+.gruen table td, 
+.webdesign table th,
+.webdesign table td {
 	border-bottom: 1px solid #66b32d;
 }
-#content .vortragstabelle th.titel {
+.vortragstabelle th.titel {
 	width: 25%;
 }
-#content .vortragstabelle th.kurztext {
+.vortragstabelle th.kurztext {
 	width: 55%;
 }
-#content .vortragstabelle th.referent {
+vortragstabelle th.referent {
 	width: 20%;
 }
-#content .zeitplan th,
-#content .zeitplan td {
+.zeitplan th,
+.zeitplan td {
 	border-right: none;
 	border-top: none;
 	border-bottom: 1px solid #999;
@@ -1473,48 +1483,48 @@ div#content .accordion h2.webdesign {
 	color:#444;
 	padding-left:6px;
 }
-#content .zeitplan th.zeit {
+.zeitplan th.zeit {
 	width:10%;
 }
-#content .zeitplan th.ort {
+zeitplan th.ort {
 	text-align: center;
 	width:45%;
 }
-#content .zeitplan td .titel {
+.zeitplan td .titel {
 	font-weight: bold;
 	letter-spacing: .02em;
 }
-#content .zeitplan td .referent {
+zeitplan td .referent {
 	color:#666;
 }
-#content .zeitplan td.cms {
+.zeitplan td.gelb, 
+.zeitplan td.cms {
 	background-color:#fffceb;
 	border-left: 7px solid #ffdd0e;
 }
-#content .zeitplan td.barrierefreiheit {
+.zeitplan td.blau,
+.zeitplan td.barrierefreiheit {
 	background-color:#f0f6fd;
 	border-left: 7px solid #1559a6;
 }
-#content .zeitplan td.webdesign {
+.zeitplan td.gruen,
+.zeitplan td.webdesign {
 	background-color:#f7fcf4;
 	border-left: 7px solid #66b32d;
 }
-#content .zeitplan td.pause {
+.zeitplan td.pause {
 	text-align: center;
 	border-left: 7px solid #ddd;
 	color:#777;
 	letter-spacing: .1em;
 	background-color: #fefefe;
 }
-#content .zeitplan td.allgemein {
+.zeitplan td.allgemein {
 	text-align: center;
 	border-left: 7px solid #aaa;
 	background-color: #fefefe;
 }
-#content .zeitplan td.pause.kurz {
-}
-#content .zeitplan td.pause.lang {
-}
+
 
 
 	/*	CMS: #ffdd0e;
