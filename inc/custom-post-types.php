@@ -266,7 +266,7 @@ function vortrag_shortcode( $atts ) {
     global $vortragsraeume;
 	extract( shortcode_atts( array(
 		'cat' => '',
-		'num' => 30,
+		'num' => 35,
 		'id'	=> '',
 		'format'    => 'table',
 		'showautor' => 1
@@ -279,12 +279,16 @@ function vortrag_shortcode( $atts ) {
 
 	    $args = array(
 			'post_type' => 'vortrag',
+			'posts_per_page' => $num,
 			'p' => $id
 		);
 	    $single = 1;
 	}elseif ((isset($cat)) && ( strlen(trim($cat))>0)) {
 	    $args = array(
 			'post_type' => 'vortrag',
+			'posts_per_page' => $num,
+			'orderby'   =>  'title',
+			'order'   => 'ASC',
 			'tax_query' => array(
 				array(
 					'taxonomy' => 'vortrag_category',
@@ -318,7 +322,6 @@ function vortrag_shortcode( $atts ) {
 				    <tbody>
 				';
 		    }
-
 
 		    while ($links->have_posts() && ($i<$num) ) {
 			$links->the_post();
@@ -521,7 +524,6 @@ function vortrag_shortcode( $atts ) {
 			$out .= __('Es konnten keine Vortragsinformationen gefunden werden.', 'wke2014');
 			$out .= "</p></section>\n";
 		}
-
 	return $out;
 }
 add_shortcode( 'vortrag', 'vortrag_shortcode' );
