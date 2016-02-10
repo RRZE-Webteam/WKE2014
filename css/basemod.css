@@ -1441,6 +1441,16 @@
 	background-color: #66b32d;
 	border-bottom: 2px solid #6A7E10;
 }
+.accordion h2.rot {
+	background-color: #ff0000;
+	border-bottom: 2px solid #a00;
+}
+
+.accordion h2.grau {
+	background-color: #cccccc;
+	border-bottom: 2px solid #999;
+}
+
 .vortragsliste table th,
 .vortragsliste table td {
 	border-right: none;
@@ -1465,6 +1475,15 @@
 .webdesign table td {
 	border-bottom: 1px solid #66b32d;
 }
+.rot table th,
+.rot table td {
+	border-bottom: 1px solid #999;
+}
+.grau table th,
+.grau table td {
+	border-bottom: 1px solid #999;
+}
+
 .vortragstabelle th.titel {
 	width: 25%;
 }
@@ -1512,6 +1531,15 @@ zeitplan td .referent {
 	background-color:#f7fcf4;
 	border-left: 7px solid #66b32d;
 }
+.zeitplan td.rot {
+	background-color: #ffd5d5;
+	border-left: 7px solid #a00;
+}
+.zeitplan td.grau {
+	background-color: #ccc;
+	border-left: 7px solid #999;
+}
+
 .zeitplan td.pause {
 	text-align: center;
 	border-left: 7px solid #ddd;
