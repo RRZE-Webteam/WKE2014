@@ -1034,3 +1034,31 @@ Videos
 .embed-youtube p img {
     margin-right: 5px;
 }
+
+/*  ------------------------------------------------------
+Contact Form 7
+--------------------------------------------------------*/
+        
+div.form-row {
+    display: table;
+    width: calc(100% - 10px);
+    padding: 5px;
+  }
+  
+span.wpcf7-list-item label { 
+    display: table-cell;
+    padding: 5px;
+  }
+
+span.cf-column-4 label {
+    width: 24%;
+}
+
+span.cf-column-5 label {
+    width: 19%;
+}
+
+#content fieldset h3 { 
+    margin-top: 1em; 
+    font-size: 0.9em; 
+}
