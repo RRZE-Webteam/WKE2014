@@ -1036,20 +1036,24 @@ Videos
 }
 
 /*  ------------------------------------------------------
-Contact Form 7
+Contact Form 7 Evaluation
 --------------------------------------------------------*/
         
 div.form-row {
     display: table;
     width: calc(100% - 10px);
     padding: 5px;
-  }
+}
   
 span.wpcf7-list-item label { 
     display: table-cell;
     padding: 5px;
-  }
-
+}
+  
+span.quiz-schutz label {
+    width:100%
+}
+  
 span.cf-column-4 label {
     width: 24%;
 }
