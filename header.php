@@ -31,7 +31,8 @@ global $options;
 	    </div>
 	    <?php if ( is_active_sidebar( 'headerbox-area' ) ) {
 		dynamic_sidebar( 'headerbox-area' );
-	     } elseif (isset($options['headerbox-datum']) && isset($options['headerbox-title'])) { ?>
+	    } elseif ((isset($options['headerbox-datum']) && $options['headerbox-datum'] != '')
+                    || (isset($options['headerbox-title']) && $options['headerbox-title'] != '')) { ?>
 		 <div id="header-box">
 		    <div class="wrapper">
 			<p class="datum"><?php echo $options['headerbox-datum']; ?></p>
